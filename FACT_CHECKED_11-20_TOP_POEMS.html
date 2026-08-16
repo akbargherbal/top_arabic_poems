@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أشهر القصائد في التراث العربي — المراكز 11 إلى 20</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette — dark editorial */
+      --bg:          #0f1117;
+      --surface:     #161b27;
+      --surface2:    #1e2535;
+      --border:      #2a3348;
+      --accent:      #e8c87d;        /* warm gold */
+      --accent2:     #6eb5ff;        /* sky blue for links / inline code */
+      --text:        #d4dce8;
+      --text-muted:  #7a8aa0;
+      --text-strong: #eef2f8;
+
+      /* Typography */
+      --font-body:   'DM Sans', sans-serif;
+      --font-head:   'Fraunces', Georgia, serif;
+      --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+
+      /* Layout */
+      --content-max: 860px;
+      --sidebar-w:   260px;
+      --gap:         2rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: clamp(16px, 1.1vw, 18px);
+      line-height: 1.8;
+      text-align: right;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Progress bar ──────────────────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Sidebar TOC ───────────────────────────────────────── */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 100;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      transition: width 0.25s ease, padding 0.25s ease;
+    }
+
+    #sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #sidebar-title {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #sidebar-collapse-btn {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      line-height: 1;
+      transition: color 0.15s, border-color 0.15s, transform 0.25s ease;
+    }
+    #sidebar-collapse-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Collapsed sidebar state ───────────────────────────── */
+    #sidebar.collapsed {
+      width: 56px;
+      padding: 2rem 0.85rem;
+      overflow: hidden;
+    }
+    #sidebar.collapsed #sidebar-header { justify-content: center; }
+    #sidebar.collapsed #sidebar-title,
+    #sidebar.collapsed #toc { display: none; }
+    #sidebar.collapsed #sidebar-collapse-btn { transform: rotate(180deg); }
+    #sidebar.collapsed ~ #main {
+      margin-right: 56px !important;
+    }
+
+    #toc { list-style: none; }
+    #toc li { line-height: 1.4; }
+    #toc a {
+      display: block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #toc a:hover, #toc a.active {
+      background: var(--surface2);
+      color: var(--text-strong);
+    }
+    #toc .toc-h2 { padding-right: 0.5rem; }
+    #toc .toc-h3 { padding-right: 1.25rem; font-size: 0.77rem; }
+    #toc .toc-h4 { padding-right: 2rem;   font-size: 0.73rem; color: var(--border); }
+
+    /* ── Main content ──────────────────────────────────────── */
+    #main {
+      margin-right: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 4rem var(--gap) 6rem;
+      transition: margin 0.25s ease;
+    }
+
+    article {
+      width: 100%;
+      max-width: var(--content-max);
+    }
+
+    /* ── Header strip ──────────────────────────────────────── */
+    #doc-header {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    #doc-header::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--accent);
+    }
+    #doc-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--text-strong);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    #doc-meta {
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Headings ──────────────────────────────────────────── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-head);
+      color: var(--text-strong);
+      line-height: 1.2;
+      font-weight: 600;
+      scroll-margin-top: 2rem;
+    }
+    h1 { font-size: clamp(1.7rem, 2.5vw, 2.4rem); margin: 3rem 0 1.2rem; }
+    h2 {
+      font-size: clamp(1.35rem, 2vw, 1.85rem);
+      margin: 2.8rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 { font-size: clamp(1.1rem, 1.5vw, 1.4rem); margin: 2.2rem 0 0.8rem; }
+    h4 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem; color: var(--accent); }
+    h5, h6 { font-size: 0.95rem; margin: 1.5rem 0 0.5rem; font-weight: 500; }
+
+    /* ── Paragraphs & text ─────────────────────────────────── */
+    p { margin-bottom: 1.25rem; }
+    strong { color: var(--text-strong); font-weight: 600; }
+    em { font-style: italic; color: var(--accent); }
+    del { color: var(--text-muted); }
+    mark {
+      background: rgba(232, 200, 125, 0.2);
+      color: var(--accent);
+      border-radius: 2px;
+      padding: 0 3px;
+    }
+
+    /* ── Links ─────────────────────────────────────────────── */
+    a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    a:hover { border-bottom-color: var(--accent2); }
+
+    /* ── Lists ─────────────────────────────────────────────── */
+    ul, ol {
+      margin: 0.75rem 0 1.25rem;
+      padding-right: 1.8rem;
+    }
+    li { margin-bottom: 0.4rem; }
+    li > ul, li > ol { margin-bottom: 0; }
+    ul li::marker { color: var(--accent); }
+    ol li::marker { color: var(--accent); font-family: var(--font-mono); font-size: 0.85em; }
+
+    /* ── Inline code ───────────────────────────────────────── */
+    /* :not(pre) guard prevents this rule from bleeding into plain
+       fenced blocks where <code> is a direct child of <pre>.      */
+    :not(pre) > code:not([class]) {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: var(--surface2);
+      color: var(--accent2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15em 0.45em;
+    }
+
+    /* ── Code blocks (Pygments) ────────────────────────────── */
+    .codehilite {
+      background: #111827 !important;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1.75rem 0;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    .code-wrap {
+      position: relative;
+    }
+
+    .code-lang {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-bottom-left-radius: 6px;
+      user-select: none;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.75rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      z-index: 2;
+    }
+    .copy-btn:hover { background: var(--border); color: var(--text-strong); }
+    .copy-btn.copied { color: #7dffaa; border-color: #7dffaa44; }
+
+    .codehilite pre {
+      margin: 0 !important;
+      padding: 2.8rem 1.5rem 1.5rem !important;
+      font-family: var(--font-mono) !important;
+      font-size: clamp(0.78rem, 0.9vw, 0.88rem) !important;
+      line-height: 1.7 !important;
+      overflow-x: auto;
+      tab-size: 4;
+    }
+
+    /* ── Plain fenced blocks / Prose blocks ───────────────── */
+        /* ── Plain fenced blocks (no lang tag) ────────────────────
+       Default monospace treatment when --prose is NOT active.
+    ─────────────────────────────────────────────────────────── */
+    pre:not(.codehilite pre) {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      margin: 1.75rem 0;
+    }
+
+    /* ── Blockquotes ───────────────────────────────────────── */
+    blockquote {
+      border-right: 3px solid var(--accent);
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      background: var(--surface2);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    blockquote p { margin-bottom: 0; }
+
+    /* ── Tables ────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 1.75rem 0; border-radius: 10px; border: 1px solid var(--border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead {
+      background: var(--surface2);
+    }
+    th {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0.8rem 1.1rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+    td {
+      padding: 0.7rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── Horizontal rule ───────────────────────────────────── */
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Task lists ────────────────────────────────────────── */
+    .task-list-item input[type="checkbox"] {
+      accent-color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    /* ── Images ────────────────────────────────────────────── */
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
+      margin: 1.5rem auto;
+    }
+
+    /* ── Footnotes ─────────────────────────────────────────── */
+    .footnote {
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Back to top ───────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 40px;
+      height: 40px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s, color 0.15s;
+      z-index: 200;
+    }
+    #back-top.visible { opacity: 1; transform: translateY(0); }
+    #back-top:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Home button ────────────────────────────────────────── */
+    #home-btn {
+      position: fixed;
+      bottom: 5.5rem;
+      left: 2rem;
+      width: 40px;
+      height: 40px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 1;
+      transition: color 0.15s, border-color 0.15s;
+      z-index: 200;
+    }
+    #home-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Sidebar toggle (hidden on wide screens) ───────────── */
+    #sidebar-toggle {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 1rem;
+      z-index: 300;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    /* ── Scrollbar ─────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Animations ────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    article { animation: fadeUp 0.45s ease both; }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      :root { --sidebar-w: 220px; }
+    }
+    @media (max-width: 820px) {
+      #sidebar { transform: translateX(100%); transition: transform 0.25s; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar.collapsed { width: var(--sidebar-w); padding: 2rem 1.25rem; }
+      #sidebar.collapsed #sidebar-title,
+      #sidebar.collapsed #toc { display: block; }
+      #sidebar.collapsed #sidebar-collapse-btn { transform: none; }
+      #sidebar.collapsed ~ #main { margin-right: 0 !important; }
+      #main { margin-right: 0 !important; }
+      #sidebar-toggle { display: block; }
+      #sidebar-collapse-btn { display: none; }
+    }
+
+    /* ── Pygments injected ─────────────────────────────────── */
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #282C34; color: #ABB2BF }
+.codehilite .c { color: #7F848E } /* Comment */
+.codehilite .err { color: #ABB2BF } /* Error */
+.codehilite .esc { color: #ABB2BF } /* Escape */
+.codehilite .g { color: #ABB2BF } /* Generic */
+.codehilite .k { color: #C678DD } /* Keyword */
+.codehilite .l { color: #ABB2BF } /* Literal */
+.codehilite .n { color: #E06C75 } /* Name */
+.codehilite .o { color: #56B6C2 } /* Operator */
+.codehilite .x { color: #ABB2BF } /* Other */
+.codehilite .p { color: #ABB2BF } /* Punctuation */
+.codehilite .ch { color: #7F848E } /* Comment.Hashbang */
+.codehilite .cm { color: #7F848E } /* Comment.Multiline */
+.codehilite .cp { color: #7F848E } /* Comment.Preproc */
+.codehilite .cpf { color: #7F848E } /* Comment.PreprocFile */
+.codehilite .c1 { color: #7F848E } /* Comment.Single */
+.codehilite .cs { color: #7F848E } /* Comment.Special */
+.codehilite .gd { color: #ABB2BF } /* Generic.Deleted */
+.codehilite .ge { color: #ABB2BF } /* Generic.Emph */
+.codehilite .ges { color: #ABB2BF } /* Generic.EmphStrong */
+.codehilite .gr { color: #ABB2BF } /* Generic.Error */
+.codehilite .gh { color: #ABB2BF } /* Generic.Heading */
+.codehilite .gi { color: #ABB2BF } /* Generic.Inserted */
+.codehilite .go { color: #ABB2BF } /* Generic.Output */
+.codehilite .gp { color: #ABB2BF } /* Generic.Prompt */
+.codehilite .gs { color: #ABB2BF } /* Generic.Strong */
+.codehilite .gu { color: #ABB2BF } /* Generic.Subheading */
+.codehilite .gt { color: #ABB2BF } /* Generic.Traceback */
+.codehilite .kc { color: #E5C07B } /* Keyword.Constant */
+.codehilite .kd { color: #C678DD } /* Keyword.Declaration */
+.codehilite .kn { color: #C678DD } /* Keyword.Namespace */
+.codehilite .kp { color: #C678DD } /* Keyword.Pseudo */
+.codehilite .kr { color: #C678DD } /* Keyword.Reserved */
+.codehilite .kt { color: #E5C07B } /* Keyword.Type */
+.codehilite .ld { color: #ABB2BF } /* Literal.Date */
+.codehilite .m { color: #D19A66 } /* Literal.Number */
+.codehilite .s { color: #98C379 } /* Literal.String */
+.codehilite .na { color: #E06C75 } /* Name.Attribute */
+.codehilite .nb { color: #E5C07B } /* Name.Builtin */
+.codehilite .nc { color: #E5C07B } /* Name.Class */
+.codehilite .no { color: #E06C75 } /* Name.Constant */
+.codehilite .nd { color: #61AFEF } /* Name.Decorator */
+.codehilite .ni { color: #E06C75 } /* Name.Entity */
+.codehilite .ne { color: #E06C75 } /* Name.Exception */
+.codehilite .nf { color: #61AFEF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #E06C75 } /* Name.Label */
+.codehilite .nn { color: #E06C75 } /* Name.Namespace */
+.codehilite .nx { color: #E06C75 } /* Name.Other */
+.codehilite .py { color: #E06C75 } /* Name.Property */
+.codehilite .nt { color: #E06C75 } /* Name.Tag */
+.codehilite .nv { color: #E06C75 } /* Name.Variable */
+.codehilite .ow { color: #56B6C2 } /* Operator.Word */
+.codehilite .pm { color: #ABB2BF } /* Punctuation.Marker */
+.codehilite .w { color: #ABB2BF } /* Text.Whitespace */
+.codehilite .mb { color: #D19A66 } /* Literal.Number.Bin */
+.codehilite .mf { color: #D19A66 } /* Literal.Number.Float */
+.codehilite .mh { color: #D19A66 } /* Literal.Number.Hex */
+.codehilite .mi { color: #D19A66 } /* Literal.Number.Integer */
+.codehilite .mo { color: #D19A66 } /* Literal.Number.Oct */
+.codehilite .sa { color: #98C379 } /* Literal.String.Affix */
+.codehilite .sb { color: #98C379 } /* Literal.String.Backtick */
+.codehilite .sc { color: #98C379 } /* Literal.String.Char */
+.codehilite .dl { color: #98C379 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #98C379 } /* Literal.String.Doc */
+.codehilite .s2 { color: #98C379 } /* Literal.String.Double */
+.codehilite .se { color: #98C379 } /* Literal.String.Escape */
+.codehilite .sh { color: #98C379 } /* Literal.String.Heredoc */
+.codehilite .si { color: #98C379 } /* Literal.String.Interpol */
+.codehilite .sx { color: #98C379 } /* Literal.String.Other */
+.codehilite .sr { color: #98C379 } /* Literal.String.Regex */
+.codehilite .s1 { color: #98C379 } /* Literal.String.Single */
+.codehilite .ss { color: #98C379 } /* Literal.String.Symbol */
+.codehilite .bp { color: #E5C07B } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #56B6C2; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #E06C75 } /* Name.Variable.Class */
+.codehilite .vg { color: #E06C75 } /* Name.Variable.Global */
+.codehilite .vi { color: #E06C75 } /* Name.Variable.Instance */
+.codehilite .vm { color: #E06C75 } /* Name.Variable.Magic */
+.codehilite .il { color: #D19A66 } /* Literal.Number.Integer.Long */
+
+
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar" aria-label="Table of contents">
+  <div id="sidebar-header">
+    <div id="sidebar-title">Contents</div>
+    <button id="sidebar-collapse-btn" aria-label="Collapse sidebar" title="Collapse sidebar">◂</button>
+  </div>
+  <ul id="toc"></ul>
+</nav>
+
+<button id="sidebar-toggle" aria-label="Toggle sidebar">☰ TOC</button>
+
+<!-- Main -->
+<div id="main">
+  <article>
+    <header id="doc-header">
+      <h1 id="doc-title">أشهر القصائد في التراث العربي — المراكز 11 إلى 20</h1>
+      <div id="doc-meta"></div>
+    </header>
+
+    <h1 id="11-20">أشهر القصائد في التراث العربي — المراكز 11 إلى 20</h1>
+<p>(خارج المعلقات العشر، وخارج القصائد العشر الأولى المُعتمدة سابقًا)</p>
+<p>وفقًا للمعايير الستة نفسها المعتمدة في القائمة الأولى:</p>
+<table>
+<thead>
+<tr>
+<th>المعيار</th>
+<th>الوزن الأقصى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الفن/الجمال (الصورة، اللغة، الموسيقى)</td>
+<td>25</td>
+</tr>
+<tr>
+<td>الأثر التاريخي والنقدي (إجماع النقاد، الشهرة)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>تنوع الغرض وعمقه</td>
+<td>15</td>
+</tr>
+<tr>
+<td>التمثيل الحضاري/العصري</td>
+<td>15</td>
+</tr>
+<tr>
+<td>الصدق الفني/التجربة الشعورية</td>
+<td>15</td>
+</tr>
+<tr>
+<td>اكتمال البناء الشعري</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">القائمة مرتبة تنازليًا</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>القصيدة</th>
+<th>الشاعر</th>
+<th>العصر</th>
+<th>الغرض</th>
+<th><strong>المجموع</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>واحرَّ قلباه ممن قلبه شبم</td>
+<td>المتنبي</td>
+<td>عباسي</td>
+<td>عتاب/فخر/حكمة</td>
+<td><strong>91</strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td>على قدر أهل العزم تأتي العزائم</td>
+<td>المتنبي</td>
+<td>عباسي</td>
+<td>مدح/فخر/حماسة</td>
+<td><strong>90</strong></td>
+</tr>
+<tr>
+<td>13</td>
+<td>مدارس آيات خلت من تلاوة</td>
+<td>دعبل الخزاعي</td>
+<td>عباسي</td>
+<td>رثاء/سياسة/مظلومية</td>
+<td><strong>89</strong></td>
+</tr>
+<tr>
+<td>14</td>
+<td>إني ذكرتك بالزهراء مشتاقًا</td>
+<td>ابن زيدون</td>
+<td>أندلسي</td>
+<td>غزل/حنين/وصف</td>
+<td><strong>88</strong></td>
+</tr>
+<tr>
+<td>15</td>
+<td>فيما مضى كنت بالأعياد مسرورًا</td>
+<td>المعتمد بن عباد</td>
+<td>أندلسي</td>
+<td>رثاء/حنين/أسر</td>
+<td><strong>86</strong></td>
+</tr>
+<tr>
+<td>16</td>
+<td>لا تعذليه فإن العذل يولعه</td>
+<td>ابن زريق البغدادي</td>
+<td>عباسي/أندلسي</td>
+<td>فراق/غربة/حنين</td>
+<td><strong>85</strong></td>
+</tr>
+<tr>
+<td>17</td>
+<td>يا من يرى ما في الضمير ويسمع</td>
+<td>أبو زيد السهيلي</td>
+<td>أندلسي</td>
+<td>تضرع/دعاء/زهد</td>
+<td><strong>84</strong></td>
+</tr>
+<tr>
+<td>18</td>
+<td>بعيشك هل تدري أهوج الجنائب (الجبل)</td>
+<td>ابن خفاجة</td>
+<td>أندلسي</td>
+<td>وصف/تأمل فلسفي</td>
+<td><strong>84</strong></td>
+</tr>
+<tr>
+<td>19</td>
+<td>لعمرك ما ضاقت بلاد بأهلها</td>
+<td>عمرو بن الأهتم</td>
+<td>جاهلي</td>
+<td>حكمة/كرم/فخر</td>
+<td><strong>83</strong></td>
+</tr>
+<tr>
+<td>20</td>
+<td>ألا ليت شعري هل أبيتن ليلة</td>
+<td>مالك بن الريب</td>
+<td>أموي (صدر الإسلام)</td>
+<td>رثاء الذات/حنين</td>
+<td><strong>82</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">ملاحظات على الاختيار</h2>
+<ul>
+<li>استمرت <strong>الثنائية العباسية العليا</strong> (المتنبي) في المركزين 11 و12 لأن القصيدتين تحققان درجات استثنائية في <strong>الفن والبناء وتنوع الغرض</strong>.</li>
+<li>ارتفع <strong>المعتمد بن عباد وابن زريق البغدادي</strong> بسبب <strong>الصدق الشعوري والتمثيل الحضاري الأندلسي</strong>.</li>
+<li>أُدرجت <strong>مرثية مالك بن الريب</strong> (ألا ليت شعري) لتمثيلها الفريد لرثاء الذات في لحظة الاحتضار، وهي من أعمق تجارب الصدق الفني في الشعر العربي القديم.</li>
+<li>أُدرجت قصيدة <strong>عمرو بن الأهتم</strong> الجاهلية لتوسيع التمثيل الزمني للقائمة نحو العصر الجاهلي، ولشهرة بيتها الحكمي الذي تجاوز حدود قصيدته الأصلية.</li>
+<li>أُدرجت قصيدة <strong>أبي زيد السهيلي</strong> الأندلسي في التضرع والدعاء لتمثيل غرض الزهد والابتهال الذي لم يكن حاضرًا بقوة في القائمة الأولى.</li>
+</ul>
+<hr>
+<h2 id="1120">روابط ونصوص القصائد 11–20</h2>
+<ol>
+<li>
+<p><strong>واحرَّ قلباه ممن قلبه شبم – المتنبي</strong><br>
+   - <a href="https://ar.wikisource.org/wiki/%D9%88%D8%A7_%D8%AD%D8%B1_%D9%82%D9%84%D8%A8%D8%A7%D9%87_%D9%85%D9%85%D9%86_%D9%82%D9%84%D8%A8%D9%87_%D8%B4%D8%A8%D9%85">وا حر قلباه ممن قلبه شبم - ويكي مصدر</a> (نص كامل).<br>
+   - <a href="https://www.aldiwan.net/poem10521.html">واحر قلباه ممن قلبه شبم - موقع الديوان</a>.</p>
+</li>
+<li>
+<p><strong>على قدر أهل العزم تأتي العزائم – المتنبي</strong><br>
+   - <a href="https://ar.wikisource.org/wiki/%D8%B9%D9%84%D9%89_%D9%82%D8%AF%D8%B1_%D8%A3%D9%87%D9%84_%D8%A7%D9%84%D8%B9%D8%B2%D9%85_%D8%AA%D8%A3%D8%AA%D9%8A_%D8%A7%D9%84%D8%B9%D8%B2%D8%A7%D8%A6%D9%85">على قدر أهل العزم تأتي العزائم - ويكي مصدر</a> (نص كامل).<br>
+   - <a href="https://www.aldiwan.net/poem10524.html">على قدر أهل العزم - موقع الديوان</a>.</p>
+</li>
+<li>
+<p><strong>مدارس آيات خلت من تلاوة – دعبل الخزاعي</strong><br>
+   - <a href="https://www.aldiwan.net/poem28547.html">مدارس آيات خلت من تلاوة - موقع الديوان</a>.<br>
+   - <a href="https://www.shoaraa.com/poem_print-5779.html">مدارس آيات خلت من تلاوة - موقع شعراء (نص محقق مع رواية إنشادها أمام الإمام الرضا)</a>.</p>
+</li>
+<li>
+<p><strong>إني ذكرتك بالزهراء مشتاقًا – ابن زيدون</strong><br>
+   - <a href="https://ar.wikisource.org/wiki/%D8%A5%D9%86%D9%91%D9%8A_%D8%B0%D9%83%D8%B1%D9%92%D8%AA%D9%8F%D9%83%D9%90_%D8%A8%D8%A7%D9%84%D8%B2%D9%91%D9%87%D8%B1%D8%A7%D8%A1_%D9%85%D8%B4%D8%AA%D8%A7%D9%82%D8%A7">إني ذكرتك بالزهراء مشتاقا - ويكي مصدر</a> (نص كامل).<br>
+   - <a href="https://www.aldiwan.net/poem11858.html">إني ذكرتك بازهراء مشتاقا - موقع الديوان</a>.<br>
+   - <a href="https://poetsgate.com/poem.php?pm=814">اني ذكرتك بالزهراء مشتاقا - بوابة الشعراء</a>.</p>
+</li>
+<li>
+<p><strong>فيما مضى كنت بالأعياد مسرورًا – المعتمد بن عباد</strong><br>
+   - <a href="https://ar.wikisource.org/wiki/%D8%B4%D8%B9%D8%B1_%D8%A7%D9%84%D9%85%D8%B9%D8%AA%D9%85%D8%AF_%D8%A8%D9%86_%D8%B9%D8%A8%D8%A7%D8%AF">شعر المعتمد بن عباد - ويكي مصدر</a> (نص كامل).<br>
+   - <a href="https://www.aldiwan.net/poem14212.html">فيما مضى كنت بالأعياد مسرورا - موقع الديوان</a>.<br>
+   - <a href="https://poetsgate.com/poem.php?pm=1465">فيما مضى كنت بالأعياد مسرورا - بوابة الشعراء</a>.</p>
+</li>
+<li>
+<p><strong>لا تعذليه فإن العذل يولعه – ابن زريق البغدادي</strong><br>
+   - <a href="https://ar.wikisource.org/wiki/%D9%84%D8%A7_%D8%AA%D8%B9%D8%B0%D9%84%D9%8A%D9%87_%D9%81%D8%A5%D9%86_%D8%A7%D9%84%D8%B9%D8%B0%D9%84_%D9%8A%D9%88%D9%84%D8%B9%D9%87">لا تعذليه فإن العذل يولعه - ويكي مصدر</a> (نص كامل).<br>
+   - <a href="https://www.aldiwan.net/poem13279.html">لا تعذليه فإن العذل يولعه - موقع الديوان</a>.<br>
+   - <a href="https://poetsgate.com/poem.php?pm=15018">لا تعذليه فان العذل يولعه - بوابة الشعراء (مع قصة القصيدة)</a>.</p>
+</li>
+<li>
+<p><strong>يا من يرى ما في الضمير ويسمع – أبو زيد السهيلي</strong><br>
+   - <a href="https://poetsgate.com/poem.php?pm=227163">يا من يرى ما في الضمير ويسمع - بوابة الشعراء</a>.<br>
+   - <a href="https://xn--igbhe1a7h.com/wiki/%D9%8A%D8%A7_%D9%85%D9%86_%D9%8A%D8%B1%D9%89_%D9%85%D8%A7_%D9%81%D9%8A_%D8%A7%D9%84%D8%B6%D9%85%D9%8A%D8%B1_%D9%88%D9%8A%D8%B3%D9%85%D8%B9">قصيدة يا من يرى ما في الضمير ويسمع - موسوعة الأدب العربي</a>.</p>
+</li>
+<li>
+<p><strong>بعيشك هل تدري أهوج الجنائب (قصيدة الجبل) – ابن خفاجة</strong><br>
+   - <a href="https://www.aldiwan.net/poem12863.html">بعيشك هل تدري أهوج الجنائب - موقع الديوان</a> (نص كامل).<br>
+   - <a href="https://poems.adabworld.com/%D9%82%D8%B5%D8%A7%D8%A6%D8%AF/%D8%A7%D9%84%D8%B9%D8%B5%D8%B1-%D8%A7%D9%84%D8%A3%D9%86%D8%AF%D9%84%D8%B3%D9%8A/%D8%A7%D8%A8%D9%86-%D8%AE%D9%81%D8%A7%D8%AC%D8%A9/%D8%A8%D8%B9%D9%8A%D8%B4%D9%83-%D9%87%D9%84-%D8%AA%D8%AF%D8%B1%D9%8A-%D8%A3%D9%87%D9%88%D8%AC-%D8%A7%D9%84%D8%AC%D9%86%D8%A7%D8%A6%D8%A8/">قصيدة بعيشك هل تدري أهوج الجنائب - عالم الأدب (مع شرح المعاني)</a>.</p>
+</li>
+<li>
+<p><strong>لعمرك ما ضاقت بلاد بأهلها – عمرو بن الأهتم</strong><br>
+   - <a href="https://www.aldiwan.net/poem86481.html">ألا طرقت أسماء وهي طروق (القصيدة الكاملة التي منها البيت) - موقع الديوان</a>.</p>
+</li>
+<li>
+<p><strong>ألا ليت شعري هل أبيتن ليلة – مالك بن الريب</strong></p>
+<ul>
+<li><a href="https://www.aldiwan.net/poem80856.html">ألا ليت شعري هل أبيتن ليلة - موقع الديوان</a> (نص كامل).</li>
+<li><a href="https://poetry.dct.gov.ae/poems/28285-%D8%A3%D9%84%D8%A7-%D9%84%D9%8A%D8%AA-%D8%B4%D8%B9%D8%B1%D9%8A-%D9%87%D9%84-%D8%A3%D8%A8%D9%8A%D8%AA%D9%86-%D9%84%D9%8A%D9%84%D8%A9">ألا ليت شعري هل أبيتن ليلة - الموسوعة الشعرية، دار الثقافة الإماراتية (مع ترجمة الشاعر وسياق نظمها)</a>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>ملاحظات عامة:</p>
+<ul>
+<li>ويكي مصدر (ar.wikisource.org) هو المرجع المباشر الموثوق للنصوص الكاملة عند توفرها.</li>
+<li>موقع الديوان (aldiwan.net) وبوابة الشعراء (poetsgate.com) اعتُمدا كمصدرين تكميليين موثوقين لضبط النصوص عند غياب النسخة على ويكي مصدر.</li>
+<li>صياغة الرابط بالشكل <code>[النص](الرابط)</code> تحمي الرابط من التداخل مع النصوص الشارحة المجاورة له.</li>
+</ul>
+  </article>
+</div>
+
+
+<a id="back-top" href="#" title="Back to top" aria-label="Back to top">↑</a>
+
+<script>
+(function () {
+  // ── Reading progress ──────────────────────────────────────
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+
+
+// ── Build TOC from headings ───────────────────────────────
+  const article = document.querySelector('article');
+  const toc     = document.getElementById('toc');
+  const headings = article.querySelectorAll('h1,h2,h3,h4');
+  let idx = 0;
+
+  headings.forEach(h => {
+    if (h.id === 'doc-title') return;
+    if (!h.id) { h.id = 'heading-' + (idx++); }
+    const li  = document.createElement('li');
+    const a   = document.createElement('a');
+    a.href    = '#' + h.id;
+    a.textContent = h.textContent;
+    a.className   = 'toc-' + h.tagName.toLowerCase();
+    
+    // Add native tooltip only if the text is truncated
+    a.addEventListener('mouseenter', function() {
+      if (this.scrollWidth > this.clientWidth) {
+        this.title = this.textContent;
+      } else {
+        this.removeAttribute('title');
+      }
+    });
+
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // ── Active TOC highlight on scroll ───────────────────────
+  const tocLinks = toc.querySelectorAll('a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const link = toc.querySelector('a[href="#' + e.target.id + '"]');
+      if (link) link.classList.toggle('active', e.isIntersecting);
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  headings.forEach(h => { if (h.id !== 'doc-title') observer.observe(h); });
+
+  // ── Back-to-top visibility ────────────────────────────────
+  const btt = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+  btt.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Sidebar toggle (mobile) ───────────────────────────────
+  document.getElementById('sidebar-toggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  // ── Sidebar collapse (desktop) ────────────────────────────
+  const collapseBtn = document.getElementById('sidebar-collapse-btn');
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+  }
+
+// ── Copy buttons on code blocks & prose blocks ────────────
+  document.querySelectorAll('.codehilite, pre:not(.codehilite pre)').forEach(block => {
+    const btn  = document.createElement('button');
+    btn.className   = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy text');
+    block.style.position = 'relative';
+    block.prepend(btn);
+    
+    btn.addEventListener('click', () => {
+      // Find the actual pre element (it might be the block itself, or inside it)
+      const pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
+      if (!pre) return;
+      
+      // Clone the node so we can remove the button from the copied text
+      const clone = pre.cloneNode(true);
+      const btnInClone = clone.querySelector('.copy-btn');
+      if (btnInClone) btnInClone.remove();
+      
+      navigator.clipboard.writeText(clone.innerText).then(() => {
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+
+  
+  // ── Wrap tables for horizontal scroll ────────────────────
+  document.querySelectorAll('article table').forEach(t => {
+    const w = document.createElement('div');
+    w.className = 'table-wrap';
+    t.parentNode.insertBefore(w, t);
+    w.appendChild(t);
+  });
+
+  // ── Doc meta (word count + read time) ────────────────────
+  const words = article.innerText.trim().split(/\s+/).length;
+  const mins  = Math.max(1, Math.round(words / 200));
+  const meta  = document.getElementById('doc-meta');
+  if (meta) meta.textContent = words.toLocaleString() + ' words · ' + mins + ' min read';
+})();
+</script>
+
+</body>
+</html>
