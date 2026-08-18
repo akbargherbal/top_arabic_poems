@@ -1,0 +1,6 @@
+{
+  "name": "Luzumiyyat Verses",
+  "description": "An interactive web app showing the verses of Al-Ma'arri's Luzumiyyat without explanations, featuring search, bookmarks, diacritics toggle, and elegant Arabic typography.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

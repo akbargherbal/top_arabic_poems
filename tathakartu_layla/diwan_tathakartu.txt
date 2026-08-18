@@ -1,0 +1,146 @@
+<div class="bet-1 row pt-0 px-5 pb-4 justify-content-center diacritizable" id="poem_content">
+                        <h3 style="height: 28px;"><d class="mosahma_highlight" id="4001">تَذَكَّرتُ لَيلى وَالسِنينَ <span class="mosahma_highlight" id="4916">الخَوالِيا</span></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4001"><d class="mosahma_highlight" id="4917">وَأَيّامَ لا نَخشى عَلى اللَهوِ ناهِيا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="14298"><d class="mosahma_highlight" id="14298">وَيَومٍ كَظِلِّ الرُمحِ قَصَّرتُ ظِلَّهُ</d></d></h3><h3 style="height: 28px;">
+بِلَيلى فَلَهّاني وَما كُنتُ لاهِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="14299"><span class="mosahma_highlight" id="25497">بِثَمدينَ</span></span> لاحَت نارُ لَيلى وَصُحبَتي</h3><h3 style="height: 28px;">
+بِذاتِ <span class="mosahma_highlight" id="971">الغَضى</span> <d class="mosahma_highlight" id="10672"><d class="mosahma_highlight" id="10672">تُزجي المَطِيَّ النَواجِيا</d></d></h3><h3 style="height: 28px;">
+فَقالَ <d class="mosahma_highlight" id="18941"><d class="mosahma_highlight" id="18941">بَصيرُ القَومِ أَلمَحتُ كَوكَباً</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25540"><d class="mosahma_highlight" id="25540">بَدا في سَوادِ اللَيلِ فَرداً يَمانِيا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25541"><d class="mosahma_highlight" id="25541">فَقُلتُ لَهُ بَل نارُ لَيلى تَوَقَّدَت</d></d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="969">بِعَليا</span> <span class="mosahma_highlight" id="970">تَسامى</span> ضَوءُها فَبَدا لِيا</h3><h3 style="height: 28px;">
+فَلَيتَ رِكابَ القَومِ لَم تَقطَعِ <span class="mosahma_highlight" id="971">الغَضى</span></h3><h3 style="height: 28px;">
+وَلَيتَ <span class="mosahma_highlight" id="971">الغَضى</span> ماشى الرِكابَ لَيالِيا</h3><h3 style="height: 28px;">
+فَيا لَيلَ كَم مِن حاجَةٍ لي مُهِمَّةٍ</h3><h3 style="height: 28px;">
+إِذا جِئتُكُم بِاللَيلِ لَم أَدرِ ماهِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="25545"><span class="mosahma_highlight" id="25546"><span class="mosahma_highlight" id="25547">خَليلَيَّ</span></span></span> إِن لا تَبكِيانِيَ أَلتَمِس</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4002">خَليلاً إِذا أَنزَفتُ دَمعي بَكى لِيا</d></h3><h3 style="height: 28px;">
+فَما <d class="mosahma_highlight" id="25700"><d class="mosahma_highlight" id="25700">أُشرِفُ الأَبقَاعَ إِلّا <span class="mosahma_highlight" id="25701">صَبابَةً</span></d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25702"><d class="mosahma_highlight" id="25702">وَلا أُنشِدُ الأَشعارَ إِلّا تَداوِيا</d></d></h3><h3 style="height: 28px;">
+وَقَد يَجمَعُ اللَهُ الشَتيتَينِ بَعدَما</h3><h3 style="height: 28px;">
+يَظُنّانِ كُلَّ الظَنِّ أَن لا تَلاقِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4003">لَحى اللَهُ أَقواماً يَقولونَ إِنَّنا</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4003">وَجَدنا طَوالَ الدَهرِ لِلحُبِّ شافِيا</d></h3><h3 style="height: 28px;">
+وَعَهدي بِلَيلى وَهيَ ذاتُ <span class="mosahma_highlight" id="972"><span class="mosahma_highlight" id="5802">مُؤَصِّدٍ</span></span></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25703"><d class="mosahma_highlight" id="25703">تَرُدُّ عَلَينا بِالعَشِيِّ المَواشِيا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="13474"><d class="mosahma_highlight" id="13474">فَشَبَّ بَنو لَيلى وَشَبَّ بَنو اِبنِها</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="13475"><d class="mosahma_highlight" id="13475">وَأَعلاقُ لَيلى في فُؤادي كَما هِيا</d></d></h3><h3 style="height: 28px;">
+إِذا ما جَلَسنا مَجلِساً نَستَلِذُّهُ</h3><h3 style="height: 28px;">
+تَواشَوا بِنا حَتّى أَمَلَّ مَكانِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="15241"><d class="mosahma_highlight" id="15241">سَقى اللَهُ جاراتٍ لِلَيلى تَباعَدَت</d></d></h3><h3 style="height: 28px;">
+بِهِنَّ <span class="mosahma_highlight" id="13473">النَوى</span> حَيثُ اِحتَلَلنَ <span class="mosahma_highlight" id="10674">المَطالِيا</span></h3><h3 style="height: 28px;">
+وَلَم يُنسِني لَيلى اِفتِقارٌ وَلا غِنىً</h3><h3 style="height: 28px;">
+وَلا تَوبَةٌ حَتّى اِحتَضَنتُ <span class="mosahma_highlight" id="14300">السَوارِيا</span></h3><h3 style="height: 28px;">
+وَلا نِسوَةٌ صَبِّغنَ <span class="mosahma_highlight" id="18942"><span class="mosahma_highlight" id="18943">كَبداءَ</span></span> <span class="mosahma_highlight" id="973"><span class="mosahma_highlight" id="18944">جَلعَداً</span></span></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25549"><d class="mosahma_highlight" id="25549">لِتُشبِهَ لَيلى ثُمَّ عَرَّضنَها لِيا</d></d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="25545"><span class="mosahma_highlight" id="25546"><span class="mosahma_highlight" id="25547">خَليلَيَّ</span></span></span> لا وَاللَهِ لا أَملِكُ الَّذي</h3><h3 style="height: 28px;">
+قَضى اللَهُ في لَيلى وَلا ما قَضى لِيا</h3><h3 style="height: 28px;">
+قَضاها لِغَيري وَاِبتَلاني بِحُبِّها</h3><h3 style="height: 28px;">
+فَهَلّا بِشَيءٍ غَيرِ لَيلى اِبتَلانِيا</h3><h3 style="height: 28px;">
+وَخَبَّرتُماني أَنَّ <span class="mosahma_highlight" id="20330">تَيماءَ</span> مَنزِلٌ</h3><h3 style="height: 28px;">
+لِلَيلى إِذا ما الصَيفُ أَلقى المَراسِيا</h3><h3 style="height: 28px;">
+فَهَذي شُهورُ الصَيفِ عَنّا قَدِ اِنقَضَت</h3><h3 style="height: 28px;">
+فَما لِلنَوى تَرمي بِلَيلى المَرامِيا</h3><h3 style="height: 28px;">
+فَلَو أَنَّ واشٍ بِاليَمامَةِ دارُهُ</h3><h3 style="height: 28px;">
+وَداري بِأَعلى حَضرَمَوتَ اِهتَدى لِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="10675">وَماذا لَهُم لا أَحسَنَ اللَهُ حالُهُم</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="10675">مِنَ الحَظِّ في <span class="mosahma_highlight" id="18945">تَصريمِ</span> لَيلى حَبالِيا</d></h3><h3 style="height: 28px;">
+وَقَد كُنتُ أَعلو حُبَّ لَيلى فَلَم يَزَل</h3><h3 style="height: 28px;">
+بِيَ النَقضُ وَالإِبرامُ حَتّى عَلانِيا</h3><h3 style="height: 28px;">
+فَيا رَبِّ سَوّي الحُبَّ بَيني وَبَينَها</h3><h3 style="height: 28px;">
+يَكونُ كَفافاً لا عَلَيَّ وَلا لِيا</h3><h3 style="height: 28px;">
+فَما طَلَعَ النَجمُ الَّذي يُهتَدى بِهِ</h3><h3 style="height: 28px;">
+وَلا الصُبحُ إِلّا هَيَّجا ذِكرَها لِيا</h3><h3 style="height: 28px;">
+وَلا سِرتُ ميلاً مِن دِمَشقَ وَلا بَدا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="20331">سُهَيلٌ</span> لِأَهلِ الشامِ إِلّا بَدا لِيا</h3><h3 style="height: 28px;">
+وَلا <span class="mosahma_highlight" id="14301">سُمِّيَت</span> عِندي لَها مِن سَمِيَّةٍ</h3><h3 style="height: 28px;">
+مِنَ الناسِ إِلّا بَلَّ دَمعي رِدائِيا</h3><h3 style="height: 28px;">
+وَلا هَبَّتِ الريحُ الجُنوبُ لِأَرضِها</h3><h3 style="height: 28px;">
+مِنَ اللَيلِ إِلّا بِتُّ لِلريحِ حانِيا</h3><h3 style="height: 28px;">
+فَإِن تَمنَعوا لَيلى وَتَحموا بِلادَها</h3><h3 style="height: 28px;">
+عَلَيَّ فَلَن تَحموا عَلَيَّ القَوافِيا</h3><h3 style="height: 28px;">
+فَأَشهَدُ عِندَ اللَهِ أَنّي أُحِبُّها</h3><h3 style="height: 28px;">
+فَهَذا لَها عِندي فَما عِندَها لِيا</h3><h3 style="height: 28px;">
+قَضى اللَهُ بِالمَعروفِ مِنها لِغَيرِنا</h3><h3 style="height: 28px;">
+وَبِالشَوقِ مِنّي وَالغَرامِ قَضى لَيا</h3><h3 style="height: 28px;">
+وَإِنَّ الَّذي أَمَّلتُ يا <d class="mosahma_highlight" id="4005"><d class="mosahma_highlight" id="4005">أُمَّ مالِكٍ</d></d></h3><h3 style="height: 28px;">
+أَشابَ فُوَيدي <d class="mosahma_highlight" id="18946"><d class="mosahma_highlight" id="18946">وَاِستَهامَ فُؤادَيا</d></d></h3><h3 style="height: 28px;">
+أَعُدُّ اللَيالي لَيلَةً بَعدَ لَيلَةٍ</h3><h3 style="height: 28px;">
+وَقَد عِشتُ دَهراً لا أَعُدُّ اللَيالِيا</h3><h3 style="height: 28px;">
+وَأَخرُجُ مِن بَينِ البُيوتِ لَعَلَّني</h3><h3 style="height: 28px;">
+أُحَدِّثُ عَنكِ النَفسَ بِاللَيلِ خالِيا</h3><h3 style="height: 28px;">
+أَراني إِذا صَلَّيتُ <span class="mosahma_highlight" id="18947">يَمَّمتُ</span> نَحوَها</h3><h3 style="height: 28px;">
+بِوَجهي وَإِن كانَ المُصَلّى وَرائِيا</h3><h3 style="height: 28px;">
+وَما بِيَ إِشراكٌ وَلَكِنَّ حُبَّها</h3><h3 style="height: 28px;">
+وَعُظمَ الجَوى أَعيا الطَبيبَ المُداوِيا</h3><h3 style="height: 28px;">
+أُحِبُّ مِنَ الأَسماءِ ما وافَقَ اِسمَها</h3><h3 style="height: 28px;">
+أَوَ اِشبَهَهُ أَو كانَ مِنهُ مُدانِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="25545"><span class="mosahma_highlight" id="25546"><span class="mosahma_highlight" id="25547">خَليلَيَّ</span></span></span> لَيلى أَكبَرُ الحاجِ وَ<span class="mosahma_highlight" id="20333">المُنى</span></h3><h3 style="height: 28px;">
+فَمَن لي بِلَيلى أَو فَمَن ذا لَها بِيا</h3><h3 style="height: 28px;">
+لَعَمري لَقَد أَبكَيتِني يا حَمامَةَ ال</h3><h3 style="height: 28px;">
+عَقيقِ وَأَبكَيتِ العُيونَ البَواكِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="25545"><span class="mosahma_highlight" id="25546"><span class="mosahma_highlight" id="25547">خَليلَيَّ</span></span></span> ما أَرجو مِنَ العَيشِ بَعدَما</h3><h3 style="height: 28px;">
+أَرى حاجَتي تُشرى وَلا تُشتَرى لِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="18949">وَتُجرِمُ</span> لَيلى ثُمَّ تَزعُمُ أَنَّني</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="18948">سَلوتُ</span> وَلا يَخفى عَلى الناسِ ما بِيا</h3><h3 style="height: 28px;">
+فَلَم أَرَ مِثلَينا خَليلَي صَبابَةٍ</h3><h3 style="height: 28px;">
+أَشَدَّ عَلى رَغمِ الأَعادي تَصافِيا</h3><h3 style="height: 28px;">
+خَليلانِ لا نَرجو اللِقاءَ وَلا نَرى</h3><h3 style="height: 28px;">
+خَليلَينِ إِلّا يَرجُوانِ تَلاقِيا</h3><h3 style="height: 28px;">
+وَإِنّي لَأَستَحيِيكِ أَن تَعرِضِ <span class="mosahma_highlight" id="20333">المُنى</span></h3><h3 style="height: 28px;">
+بِوَصلِكِ أَو أَن تَعرِضي في <span class="mosahma_highlight" id="20333">المُنى</span> لِيا</h3><h3 style="height: 28px;">
+يَقولُ أُناسٌ عَلَّ <d class="mosahma_highlight" id="4006"><d class="mosahma_highlight" id="4006">مَجنونَ عامِرٍ</d></d></h3><h3 style="height: 28px;">
+يَرومُ سُلوّاً قُلتُ أَنّى لِما بِيا</h3><h3 style="height: 28px;">
+بِيَ اليَأسُ أَو داءُ الهُيامِ أَصابَني</h3><h3 style="height: 28px;">
+فَإِيّاكَ عَنّي لا يَكُن بِكَ ما بِيا</h3><h3 style="height: 28px;">
+إِذا ما اِستَطالَ الدَهرُ يا <d class="mosahma_highlight" id="4005"><d class="mosahma_highlight" id="4005">أُمَّ مالِكٍ</d></d></h3><h3 style="height: 28px;">
+فَشَأنُ المَنايا القاضِياتِ وَشانِيا</h3><h3 style="height: 28px;">
+إِذا اِكتَحَلَت عَيني بِعَينِكِ لَم تَزَل</h3><h3 style="height: 28px;">
+بِخَيرٍ وَجَلَّت <span class="mosahma_highlight" id="18950">غَمرَةً</span> عَن فُؤادِيا</h3><h3 style="height: 28px;">
+فَأَنتِ الَّتي إِن شِئتِ أَشقَيتِ عِيشَتي</h3><h3 style="height: 28px;">
+وَأَنتِ الَّتي إِن شِئتِ أَنعَمتِ بالِيا</h3><h3 style="height: 28px;">
+وَأَنتِ الَّتي ما مِن صَديقٍ وَلا عِداً</h3><h3 style="height: 28px;">
+يَرى <d class="mosahma_highlight" id="18951"><d class="mosahma_highlight" id="18951">نِضوَ ما أَبقَيتِ إِلّا رَثى لِيا</d></d></h3><h3 style="height: 28px;">
+أَمَضروبَةٌ لَيلى عَلى أَن أَزورَها</h3><h3 style="height: 28px;">
+وَمُتَّخَذٌ ذَنباً لَها أَن تَرانِيا</h3><h3 style="height: 28px;">
+إِذا سِرتُ في <d class="mosahma_highlight" id="14304"><d class="mosahma_highlight" id="14304">الأَرضِ الفَضاءِ رَأَيتُني</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25550"><d class="mosahma_highlight" id="25550">أُصانِعُ رَحلي أَن يَميلَ حِيالِيا</d></d></h3><h3 style="height: 28px;">
+يَميناً إِذا كانَت يَميناً وَإِن تَكُن</h3><h3 style="height: 28px;">
+شِمالاً يُنازِعنِ الهَوى عَن شِمالِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4004">وَإِنّي لَأَستَغشي وَما بِيَ نَعسَةٌ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="4004">لَعَلَّ خَيالاً مِنكِ يَلقى خَيالِيا</d></h3><h3 style="height: 28px;">
+هِيَ السِحرُ إِلّا أَنَّ لِلسِحرِ رُقيَةً</h3><h3 style="height: 28px;">
+وَأَنِّيَ لا <span class="mosahma_highlight" id="18952">أُلفي</span> لَها الدَهرَ راقَيا</h3><h3 style="height: 28px;">
+إِذا نَحنُ <span class="mosahma_highlight" id="20332">أَدلَجنا</span> وَأَنتِ أَمامَنا</h3><h3 style="height: 28px;">
+كَفا لِمَطايانا بِذِكراكِ هادِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="3204"><d class="mosahma_highlight" id="3204">ذَكَت نارُ شَوقي في فُؤادي فَأَصبَحَت</d></d></h3><h3 style="height: 28px;">
+لَها وَهَجٌ مُستَضرَمٌ في فُؤادِيا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25551"><d class="mosahma_highlight" id="25551">أَلا أَيُّها الرَكبُ اليَمانونَ عَرَّجوا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25552"><d class="mosahma_highlight" id="25552">عَلَينا فَقَد أَمسى هَواناً يَمانِيا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25553"><d class="mosahma_highlight" id="25553">أُسائِلُكُم هَل سالَ نَعمانُ بَعدَنا</d></d></h3><h3 style="height: 28px;">
+وَحُبَّ إِلَينا <d class="mosahma_highlight" id="21081"><d class="mosahma_highlight" id="21081">بَطنُ نَعمانَ وادِيا</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25554"><d class="mosahma_highlight" id="25554">أَلا يا حَمامَي بَطنِ نَعمانَ هِجتُما</d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25555"><d class="mosahma_highlight" id="25555">عَلَيَّ الهَوى لَمّا تَغَنَّيتُما لِيا</d></d></h3><h3 style="height: 28px;">
+وَأَبكَيتُماني وَسطَ صَحبي وَلَم أَكُن</h3><h3 style="height: 28px;">
+أُبالي دُموعَ العَينِ لَو كُنتُ خالِيا</h3><h3 style="height: 28px;">
+وَيا أَيُّها <span class="mosahma_highlight" id="14302">القُمرِيَّتانِ</span> تَجاوَبا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25557"><d class="mosahma_highlight" id="25557">بِلَحنَيكُما ثُمَّ اِسجَعا عَلَّلانِيا</d></d></h3><h3 style="height: 28px;">
+فَإِن أَنتُما اِسطَترَبتُما أَو أَرَدتُما</h3><h3 style="height: 28px;">
+لَحاقاً بِأَطلالِ <span class="mosahma_highlight" id="971">الغَضى</span> فَاِتبَعانِيا</h3><h3 style="height: 28px;">
+أَلا لَيتَ شِعري ما لِلَيلى وَمالِيا</h3><h3 style="height: 28px;">
+وَما لِلصِبا مِن بَعدِ شَيبٍ عَلانِيا</h3><h3 style="height: 28px;">
+أَلا أَيُّها الواشي بِلَيلى أَلا تَرى</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="7083"><d class="mosahma_highlight" id="7083">إِلى مَن تَشيها أَو بِمَن جِئتُ واشِيا</d></d></h3><h3 style="height: 28px;">
+لَئِن <span class="mosahma_highlight" id="14303">ظَعَنَ</span> الأَحبابُ يا <d class="mosahma_highlight" id="4005"><d class="mosahma_highlight" id="4005">أُمَّ مالِكٍ</d></d></h3><h3 style="height: 28px;">
+فَما <span class="mosahma_highlight" id="14303">ظَعَنَ</span> الحُبُّ الَّذي في فُؤادِيا</h3><h3 style="height: 28px;">
+فَيا رَبِّ إِذ صَيَّرتَ لَيلى هِيَ <span class="mosahma_highlight" id="20333">المُنى</span></h3><h3 style="height: 28px;">
+فَزِنّي بِعَينَيها كَما زِنتَها لِيا</h3><h3 style="height: 28px;">
+وَإِلّا فَبَغِّضها إِلَيَّ وَأَهلَها</h3><h3 style="height: 28px;">
+فَإِنّي بِلَيلى قَد لَقيتُ الدَواهِيا</h3><h3 style="height: 28px;">
+عَلى مِثلِ لَيلى يَقتُلُ المَرءُ نَفسَهُ</h3><h3 style="height: 28px;">
+وَإِن كُنتُ مِن لَيلى عَلى اليَأسِ طاوِيا</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="25545"><span class="mosahma_highlight" id="25546"><span class="mosahma_highlight" id="25547">خَليلَيَّ</span></span></span> إِن <span class="mosahma_highlight" id="14296">ضَنّوا</span> بِلَيلى فَقَرِّبا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25558"><d class="mosahma_highlight" id="25558">لِيَ النَعشَ وَالأَكفانَ وَاِستَغفِرا لِيا</d></d></h3><h3 style="height: 28px;">
+وإن مت من داء <span class="mosahma_highlight" id="20252">الصبابة</span> فأبلغا</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="10531"><d class="mosahma_highlight" id="10531"><d class="mosahma_highlight" id="10563"><d class="mosahma_highlight" id="10563"><span class="mosahma_highlight" id="24359">شبيهة</span> ضوء الشمس مني سلاميا</d></d></d></d></h3>
+                    </div>
