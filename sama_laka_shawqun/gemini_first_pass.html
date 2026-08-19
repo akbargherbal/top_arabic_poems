@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المخرج الأول: تقرير المطابقة</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette — dark editorial */
+      --bg:          #0f1117;
+      --surface:     #161b27;
+      --surface2:    #1e2535;
+      --border:      #2a3348;
+      --accent:      #e8c87d;        /* warm gold */
+      --accent2:     #6eb5ff;        /* sky blue for links / inline code */
+      --text:        #d4dce8;
+      --text-muted:  #7a8aa0;
+      --text-strong: #eef2f8;
+
+      /* Typography */
+      --font-body:   'DM Sans', sans-serif;
+      --font-head:   'Fraunces', Georgia, serif;
+      --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+
+      /* Layout */
+      --content-max: 860px;
+      --sidebar-w:   260px;
+      --gap:         2rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: clamp(16px, 1.1vw, 18px);
+      line-height: 1.8;
+      text-align: right;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Progress bar ──────────────────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Sidebar TOC ───────────────────────────────────────── */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 100;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      transition: width 0.25s ease, padding 0.25s ease;
+    }
+
+    #sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #sidebar-title {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #sidebar-collapse-btn {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      line-height: 1;
+      transition: color 0.15s, border-color 0.15s, transform 0.25s ease;
+    }
+    #sidebar-collapse-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Collapsed sidebar state ───────────────────────────── */
+    #sidebar.collapsed {
+      width: 56px;
+      padding: 2rem 0.85rem;
+      overflow: hidden;
+    }
+    #sidebar.collapsed #sidebar-header { justify-content: center; }
+    #sidebar.collapsed #sidebar-title,
+    #sidebar.collapsed #toc { display: none; }
+    #sidebar.collapsed #sidebar-collapse-btn { transform: rotate(180deg); }
+    #sidebar.collapsed ~ #main {
+      margin-right: 56px !important;
+    }
+
+    #toc { list-style: none; }
+    #toc li { line-height: 1.4; }
+    #toc a {
+      display: block;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #toc a:hover, #toc a.active {
+      background: var(--surface2);
+      color: var(--text-strong);
+    }
+    #toc .toc-h2 { padding-right: 0.5rem; }
+    #toc .toc-h3 { padding-right: 1.25rem; font-size: 0.77rem; }
+    #toc .toc-h4 { padding-right: 2rem;   font-size: 0.73rem; color: var(--border); }
+
+    /* ── Main content ──────────────────────────────────────── */
+    #main {
+      margin-right: var(--sidebar-w);
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 4rem var(--gap) 6rem;
+      transition: margin 0.25s ease;
+    }
+
+    article {
+      width: 100%;
+      max-width: var(--content-max);
+    }
+
+    /* ── Header strip ──────────────────────────────────────── */
+    #doc-header {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    #doc-header::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--accent);
+    }
+    #doc-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--text-strong);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    #doc-meta {
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Headings ──────────────────────────────────────────── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-head);
+      color: var(--text-strong);
+      line-height: 1.2;
+      font-weight: 600;
+      scroll-margin-top: 2rem;
+    }
+    h1 { font-size: clamp(1.7rem, 2.5vw, 2.4rem); margin: 3rem 0 1.2rem; }
+    h2 {
+      font-size: clamp(1.35rem, 2vw, 1.85rem);
+      margin: 2.8rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 { font-size: clamp(1.1rem, 1.5vw, 1.4rem); margin: 2.2rem 0 0.8rem; }
+    h4 { font-size: 1.05rem; margin: 1.8rem 0 0.6rem; color: var(--accent); }
+    h5, h6 { font-size: 0.95rem; margin: 1.5rem 0 0.5rem; font-weight: 500; }
+
+    /* ── Paragraphs & text ─────────────────────────────────── */
+    p { margin-bottom: 1.25rem; }
+    strong { color: var(--text-strong); font-weight: 600; }
+    em { font-style: italic; color: var(--accent); }
+    del { color: var(--text-muted); }
+    mark {
+      background: rgba(232, 200, 125, 0.2);
+      color: var(--accent);
+      border-radius: 2px;
+      padding: 0 3px;
+    }
+
+    /* ── Links ─────────────────────────────────────────────── */
+    a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    a:hover { border-bottom-color: var(--accent2); }
+
+    /* ── Lists ─────────────────────────────────────────────── */
+    ul, ol {
+      margin: 0.75rem 0 1.25rem;
+      padding-right: 1.8rem;
+    }
+    li { margin-bottom: 0.4rem; }
+    li > ul, li > ol { margin-bottom: 0; }
+    ul li::marker { color: var(--accent); }
+    ol li::marker { color: var(--accent); font-family: var(--font-mono); font-size: 0.85em; }
+
+    /* ── Inline code ───────────────────────────────────────── */
+    /* :not(pre) guard prevents this rule from bleeding into plain
+       fenced blocks where <code> is a direct child of <pre>.      */
+    :not(pre) > code:not([class]) {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: var(--surface2);
+      color: var(--accent2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15em 0.45em;
+    }
+
+    /* ── Code blocks (Pygments) ────────────────────────────── */
+    .codehilite {
+      background: #111827 !important;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1.75rem 0;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    .code-wrap {
+      position: relative;
+    }
+
+    .code-lang {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-bottom-left-radius: 6px;
+      user-select: none;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.75rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      z-index: 2;
+    }
+    .copy-btn:hover { background: var(--border); color: var(--text-strong); }
+    .copy-btn.copied { color: #7dffaa; border-color: #7dffaa44; }
+
+    .codehilite pre {
+      margin: 0 !important;
+      padding: 2.8rem 1.5rem 1.5rem !important;
+      font-family: var(--font-mono) !important;
+      font-size: clamp(0.78rem, 0.9vw, 0.88rem) !important;
+      line-height: 1.7 !important;
+      overflow-x: auto;
+      tab-size: 4;
+    }
+
+    /* ── Plain fenced blocks / Prose blocks ───────────────── */
+        /* ── Plain fenced blocks (no lang tag) ────────────────────
+       Default monospace treatment when --prose is NOT active.
+    ─────────────────────────────────────────────────────────── */
+    pre:not(.codehilite pre) {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      margin: 1.75rem 0;
+    }
+
+    /* ── Blockquotes ───────────────────────────────────────── */
+    blockquote {
+      border-right: 3px solid var(--accent);
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      background: var(--surface2);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    blockquote p { margin-bottom: 0; }
+
+    /* ── Tables ────────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 1.75rem 0; border-radius: 10px; border: 1px solid var(--border); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead {
+      background: var(--surface2);
+    }
+    th {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0.8rem 1.1rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+    td {
+      padding: 0.7rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── Horizontal rule ───────────────────────────────────── */
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Task lists ────────────────────────────────────────── */
+    .task-list-item input[type="checkbox"] {
+      accent-color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    /* ── Images ────────────────────────────────────────────── */
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
+      margin: 1.5rem auto;
+    }
+
+    /* ── Footnotes ─────────────────────────────────────────── */
+    .footnote {
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Back to top ───────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 40px;
+      height: 40px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s, color 0.15s;
+      z-index: 200;
+    }
+    #back-top.visible { opacity: 1; transform: translateY(0); }
+    #back-top:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Home button ────────────────────────────────────────── */
+    #home-btn {
+      position: fixed;
+      bottom: 5.5rem;
+      left: 2rem;
+      width: 40px;
+      height: 40px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 1;
+      transition: color 0.15s, border-color 0.15s;
+      z-index: 200;
+    }
+    #home-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── Sidebar toggle (hidden on wide screens) ───────────── */
+    #sidebar-toggle {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 1rem;
+      z-index: 300;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    /* ── Scrollbar ─────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Animations ────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    article { animation: fadeUp 0.45s ease both; }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      :root { --sidebar-w: 220px; }
+    }
+    @media (max-width: 820px) {
+      #sidebar { transform: translateX(100%); transition: transform 0.25s; }
+      #sidebar.open { transform: translateX(0); }
+      #sidebar.collapsed { width: var(--sidebar-w); padding: 2rem 1.25rem; }
+      #sidebar.collapsed #sidebar-title,
+      #sidebar.collapsed #toc { display: block; }
+      #sidebar.collapsed #sidebar-collapse-btn { transform: none; }
+      #sidebar.collapsed ~ #main { margin-right: 0 !important; }
+      #main { margin-right: 0 !important; }
+      #sidebar-toggle { display: block; }
+      #sidebar-collapse-btn { display: none; }
+    }
+
+    /* ── Pygments injected ─────────────────────────────────── */
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #282C34; color: #ABB2BF }
+.codehilite .c { color: #7F848E } /* Comment */
+.codehilite .err { color: #ABB2BF } /* Error */
+.codehilite .esc { color: #ABB2BF } /* Escape */
+.codehilite .g { color: #ABB2BF } /* Generic */
+.codehilite .k { color: #C678DD } /* Keyword */
+.codehilite .l { color: #ABB2BF } /* Literal */
+.codehilite .n { color: #E06C75 } /* Name */
+.codehilite .o { color: #56B6C2 } /* Operator */
+.codehilite .x { color: #ABB2BF } /* Other */
+.codehilite .p { color: #ABB2BF } /* Punctuation */
+.codehilite .ch { color: #7F848E } /* Comment.Hashbang */
+.codehilite .cm { color: #7F848E } /* Comment.Multiline */
+.codehilite .cp { color: #7F848E } /* Comment.Preproc */
+.codehilite .cpf { color: #7F848E } /* Comment.PreprocFile */
+.codehilite .c1 { color: #7F848E } /* Comment.Single */
+.codehilite .cs { color: #7F848E } /* Comment.Special */
+.codehilite .gd { color: #ABB2BF } /* Generic.Deleted */
+.codehilite .ge { color: #ABB2BF } /* Generic.Emph */
+.codehilite .ges { color: #ABB2BF } /* Generic.EmphStrong */
+.codehilite .gr { color: #ABB2BF } /* Generic.Error */
+.codehilite .gh { color: #ABB2BF } /* Generic.Heading */
+.codehilite .gi { color: #ABB2BF } /* Generic.Inserted */
+.codehilite .go { color: #ABB2BF } /* Generic.Output */
+.codehilite .gp { color: #ABB2BF } /* Generic.Prompt */
+.codehilite .gs { color: #ABB2BF } /* Generic.Strong */
+.codehilite .gu { color: #ABB2BF } /* Generic.Subheading */
+.codehilite .gt { color: #ABB2BF } /* Generic.Traceback */
+.codehilite .kc { color: #E5C07B } /* Keyword.Constant */
+.codehilite .kd { color: #C678DD } /* Keyword.Declaration */
+.codehilite .kn { color: #C678DD } /* Keyword.Namespace */
+.codehilite .kp { color: #C678DD } /* Keyword.Pseudo */
+.codehilite .kr { color: #C678DD } /* Keyword.Reserved */
+.codehilite .kt { color: #E5C07B } /* Keyword.Type */
+.codehilite .ld { color: #ABB2BF } /* Literal.Date */
+.codehilite .m { color: #D19A66 } /* Literal.Number */
+.codehilite .s { color: #98C379 } /* Literal.String */
+.codehilite .na { color: #E06C75 } /* Name.Attribute */
+.codehilite .nb { color: #E5C07B } /* Name.Builtin */
+.codehilite .nc { color: #E5C07B } /* Name.Class */
+.codehilite .no { color: #E06C75 } /* Name.Constant */
+.codehilite .nd { color: #61AFEF } /* Name.Decorator */
+.codehilite .ni { color: #E06C75 } /* Name.Entity */
+.codehilite .ne { color: #E06C75 } /* Name.Exception */
+.codehilite .nf { color: #61AFEF; font-weight: bold } /* Name.Function */
+.codehilite .nl { color: #E06C75 } /* Name.Label */
+.codehilite .nn { color: #E06C75 } /* Name.Namespace */
+.codehilite .nx { color: #E06C75 } /* Name.Other */
+.codehilite .py { color: #E06C75 } /* Name.Property */
+.codehilite .nt { color: #E06C75 } /* Name.Tag */
+.codehilite .nv { color: #E06C75 } /* Name.Variable */
+.codehilite .ow { color: #56B6C2 } /* Operator.Word */
+.codehilite .pm { color: #ABB2BF } /* Punctuation.Marker */
+.codehilite .w { color: #ABB2BF } /* Text.Whitespace */
+.codehilite .mb { color: #D19A66 } /* Literal.Number.Bin */
+.codehilite .mf { color: #D19A66 } /* Literal.Number.Float */
+.codehilite .mh { color: #D19A66 } /* Literal.Number.Hex */
+.codehilite .mi { color: #D19A66 } /* Literal.Number.Integer */
+.codehilite .mo { color: #D19A66 } /* Literal.Number.Oct */
+.codehilite .sa { color: #98C379 } /* Literal.String.Affix */
+.codehilite .sb { color: #98C379 } /* Literal.String.Backtick */
+.codehilite .sc { color: #98C379 } /* Literal.String.Char */
+.codehilite .dl { color: #98C379 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #98C379 } /* Literal.String.Doc */
+.codehilite .s2 { color: #98C379 } /* Literal.String.Double */
+.codehilite .se { color: #98C379 } /* Literal.String.Escape */
+.codehilite .sh { color: #98C379 } /* Literal.String.Heredoc */
+.codehilite .si { color: #98C379 } /* Literal.String.Interpol */
+.codehilite .sx { color: #98C379 } /* Literal.String.Other */
+.codehilite .sr { color: #98C379 } /* Literal.String.Regex */
+.codehilite .s1 { color: #98C379 } /* Literal.String.Single */
+.codehilite .ss { color: #98C379 } /* Literal.String.Symbol */
+.codehilite .bp { color: #E5C07B } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #56B6C2; font-weight: bold } /* Name.Function.Magic */
+.codehilite .vc { color: #E06C75 } /* Name.Variable.Class */
+.codehilite .vg { color: #E06C75 } /* Name.Variable.Global */
+.codehilite .vi { color: #E06C75 } /* Name.Variable.Instance */
+.codehilite .vm { color: #E06C75 } /* Name.Variable.Magic */
+.codehilite .il { color: #D19A66 } /* Literal.Number.Integer.Long */
+
+
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar" aria-label="Table of contents">
+  <div id="sidebar-header">
+    <div id="sidebar-title">Contents</div>
+    <button id="sidebar-collapse-btn" aria-label="Collapse sidebar" title="Collapse sidebar">◂</button>
+  </div>
+  <ul id="toc"></ul>
+</nav>
+
+<button id="sidebar-toggle" aria-label="Toggle sidebar">☰ TOC</button>
+
+<!-- Main -->
+<div id="main">
+  <article>
+    <header id="doc-header">
+      <h1 id="doc-title">المخرج الأول: تقرير المطابقة</h1>
+      <div id="doc-meta"></div>
+    </header>
+
+    <p>بناءً على مراجعة الملف النصي المرفق ومطابقته بدقة مع التسجيل الصوتي، إليك التقرير الشامل والمخرجات المطلوبة:</p>
+<h1 id="_1">المخرج الأول: تقرير المطابقة</h1>
+<p><strong>ملخص المراجعة</strong></p>
+<ul>
+<li><strong>عدد الأبيات في الملف النصي:</strong> 54 بيتًا.</li>
+<li><strong>عدد الأبيات التي أمكن مطابقتها:</strong> 54 بيتًا.</li>
+<li><strong>مشكلات ترتيب الأبيات:</strong> لا يوجد (ترتيب الأبيات متطابق تمامًا بين النص والتسجيل).</li>
+<li><strong>اختلافات الكلمات:</strong> توجد عدة اختلافات في بعض الكلمات والحروف، بعضها ناجم عن بتر في نهايات الكلمات في الملف النصي، وبعضها اختلافات في الرواية أو النطق.</li>
+<li><strong>اختلافات النطق:</strong> اختلافات واضحة في نطق بعض الضمائر (من المذكر إلى المؤنث).</li>
+<li><strong>مواضع غير محسومة:</strong> توجد بعض المواضع التي يختلف فيها النطق قليلًا وقد تعود لاختلاف الرواية.</li>
+</ul>
+<hr>
+<h2 id="_2">الاختلافات المؤكدة</h2>
+<table>
+<thead>
+<tr>
+<th>رقم البيت</th>
+<th>التوقيت في التسجيل</th>
+<th>الشطر</th>
+<th>النص المكتوب</th>
+<th>المقروء في التسجيل</th>
+<th>نوع الاختلاف</th>
+<th>الثقة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>00:12 – 00:21 (00:15)</td>
+<td>الأول</td>
+<td>أَقصَر</td>
+<td>أَقصَرا</td>
+<td>سقوط الألف (إملائي/قراءة)</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>2</td>
+<td>00:21 – 00:29 (00:24)</td>
+<td>الأول</td>
+<td>وُدُّه</td>
+<td>وُدُّها</td>
+<td>اختلاف الضمير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>3</td>
+<td>00:29 – 00:36 (00:32)</td>
+<td>الأول</td>
+<td>تَحَمَّلو</td>
+<td>تَحَمَّلوا</td>
+<td>سقوط ألف الجماعة</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>4</td>
+<td>00:36 – 00:43 (00:39)</td>
+<td>الأول</td>
+<td>تَكَمَّشو</td>
+<td>تَكَمَّشوا</td>
+<td>سقوط ألف الجماعة</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>10</td>
+<td>01:19 – 01:26 (01:21)</td>
+<td>الأول</td>
+<td>شَغفٍ</td>
+<td>سَقفٍ</td>
+<td>كلمة مختلفة (اختلاف رواية)</td>
+<td>متوسطة</td>
+</tr>
+<tr>
+<td>13</td>
+<td>01:42 – 01:50 (01:45)</td>
+<td>الأول</td>
+<td>داكِي</td>
+<td>ذاكِياً</td>
+<td>كلمة مختلفة / تنوين</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>18</td>
+<td>02:19 – 02:26 (02:22)</td>
+<td>الأول</td>
+<td>تَغَيَّر</td>
+<td>تَغَيَّرا</td>
+<td>سقوط الألف</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>20</td>
+<td>02:34 – 02:41 (02:34)</td>
+<td>الأول</td>
+<td>بَدا حَورانُ وَالآلُ دونَهُ</td>
+<td>بَدَت حَورانُ في الآلِ دونَها</td>
+<td>اختلاف كلمات وضمائر</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>23</td>
+<td>02:56 – 03:03 (03:00)</td>
+<td>الأول</td>
+<td>ظَعائِن</td>
+<td>ظَعائِنا</td>
+<td>سقوط الألف</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>25</td>
+<td>03:10 – 03:18 (03:12)</td>
+<td>الأول</td>
+<td>وَسَل لا هُمَّ</td>
+<td>وَسَلِّ الهَمَّ</td>
+<td>اختلاف كلمة وتغيير معنى</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>26</td>
+<td>03:18 – 03:25 (03:20)</td>
+<td>الأول</td>
+<td>مُتونَه</td>
+<td>مُتونَها</td>
+<td>اختلاف الضمير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>26</td>
+<td>03:18 – 03:25 (03:23)</td>
+<td>الثاني</td>
+<td>تُكسي</td>
+<td>تُكسى</td>
+<td>ألف مقصورة بدل الياء</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>27</td>
+<td>03:25 – 03:31 (03:28)</td>
+<td>الأول</td>
+<td>كَأَنَّما</td>
+<td>كَأَنَّها</td>
+<td>استبدال كلمة</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>29</td>
+<td>03:38 – 03:44 (03:40)</td>
+<td>الأول</td>
+<td>وَأَمامِه</td>
+<td>وَأَمامَها</td>
+<td>اختلاف الضمير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>30</td>
+<td>03:44 – 03:51 (03:46)</td>
+<td>الأول</td>
+<td>تُشِذُّهُ</td>
+<td>تُطيرُهُ</td>
+<td>كلمة مختلفة</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>35</td>
+<td>04:18 – 04:25 (04:20)</td>
+<td>الأول</td>
+<td>تَبكِ / إِنَّم</td>
+<td>تَبكي / إِنَّما</td>
+<td>إشباع الكسرة / بتر الحرف</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>36</td>
+<td>04:25 – 04:32 (04:28)</td>
+<td>الأول</td>
+<td>مُمَلَّك</td>
+<td>مُمَلَّكا</td>
+<td>بتر الحرف الأخير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>37</td>
+<td>04:32 – 04:39 (04:34)</td>
+<td>الأول</td>
+<td>يَهتَدي</td>
+<td>يُهتَدى</td>
+<td>مبني للمجهول</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>37</td>
+<td>04:32 – 04:39 (04:37)</td>
+<td>الثاني</td>
+<td>النُباطِيُّ</td>
+<td>النَبَطِيُّ</td>
+<td>اختلاف في بنية الكلمة</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>40</td>
+<td>04:52 – 04:58 (04:54)</td>
+<td>الأول</td>
+<td>كِلَيهِم</td>
+<td>كِلَيهِما</td>
+<td>بتر الأخير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>42</td>
+<td>05:05 – 05:12 (05:08)</td>
+<td>الأول</td>
+<td>وَأَهلُه</td>
+<td>وَأَهلُها</td>
+<td>اختلاف الضمير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>46</td>
+<td>05:33 – 05:41 (05:36)</td>
+<td>الأول</td>
+<td>تَحَدَّر</td>
+<td>تَحَدَّرا</td>
+<td>بتر الأخير</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>49</td>
+<td>05:55 – 06:03 (05:58)</td>
+<td>الأول</td>
+<td>صاحِب</td>
+<td>صاحِباً</td>
+<td>بتر تنوين الفتح</td>
+<td>عالية</td>
+</tr>
+<tr>
+<td>51</td>
+<td>06:10 – 06:17 (06:14)</td>
+<td>الثاني</td>
+<td>في</td>
+<td>مِن</td>
+<td>حرف جر مختلف</td>
+<td>عالية</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_3">ترتيب الأبيات والأشطر الناقصة والزائدة</h2>
+<ul>
+<li><strong>الترتيب:</strong> متطابق تمامًا.</li>
+<li><strong>الناقص والزائد:</strong> لا توجد أبيات أو أشطر ناقصة أو زائدة، القصيدة مكتملة من الطرفين.</li>
+</ul>
+<hr>
+<h2 id="_4">مواضع تحتاج إلى مراجعة بشرية</h2>
+<ul>
+<li><strong>البيت 8 [01:08]:</strong> كلمة <code>وَاِعتَمَّ</code> في النص، وفي التسجيل تُقرأ بإدغام سريع تبدو كـ <code>وَاعَمَّ</code>. (صُنفت كاختلاف نطق ولا تعتبر خطأ مؤكداً).</li>
+<li><strong>البيت 16 [02:07]:</strong> النص المكتوب يقول <code>ريعَ قَلبُهُ</code>، بينما يبدو في التسجيل كأنه أضاف (أل) التعريف <code>الريعَ</code> أو أدمج التنوين مع الراء المشددة. تم إثباتها في الملف الختامي كما سُمعت.</li>
+</ul>
+<hr>
+<h2 id="_5">قائمة الإصلاحات (أهمها لضبط النص)</h2>
+<ol>
+<li><strong>إصلاحات البتر النصي:</strong> الكلمات التي سقطت أحرفها الأخيرة في الملف النصي (مثل: وُدّه -&gt; ودّها، تحملو -&gt; تحملوا، إنم -&gt; إنما، كليهم -&gt; كليهما، صاحب -&gt; صاحباً).</li>
+<li><strong>البيت 20 — الشطر الأول [التوقيت 02:34]</strong><br>
+   - الحالي: فَلَمّا بَدا حَورانُ وَالآلُ دونَهُ<br>
+   - المقترح: فَلَمّا بَدَت حَورانُ في الآلِ دونَها<br>
+   - السبب: اختلاف واضح في الرواية والقراءة الصوتية.</li>
+<li><strong>البيت 25 — الشطر الأول [التوقيت 03:12]</strong><br>
+   - الحالي: فَدَع ذا وَسَل لا هُمَّ عَنكَ بِجِسرَةٍ<br>
+   - المقترح: فَدَع ذا وَسَلِّ الهَمَّ عَنكَ بِجِسرَةٍ<br>
+   - السبب: النص الحالي مكسور المعنى والإملاء، والمقروء في التسجيل هو الصحيح لغوياً.</li>
+<li><strong>البيت 30 — الشطر الأول [التوقيت 03:46]</strong><br>
+   - الحالي: كَأَنَّ صَليلَ المَروِ حينَ تُشِذُّهُ<br>
+   - المقترح: كَأَنَّ صَليلَ المَروِ حينَ تُطيرُهُ<br>
+   - السبب: اختلاف واضح وصريح بين الكلمتين.</li>
+</ol>
+<hr>
+<h1 id="_6">المخرج الثاني: ملف بايثون للتسجيل الصوتي</h1>
+<p>فيما يلي كود البايثون الذي يمثل القصيدة <strong>كما نُطقت فعلًا في التسجيل الصوتي</strong>، مع تصحيح البتر وإثبات الكلمات المسموعة وإضافة توقيت بداية كل بيت.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">poem_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># 00:12</span>
+    <span class="p">(</span><span class="s2">&quot;سَما لَكَ شَوقٌ بَعدَما كانَ أَقصَرا&quot;</span><span class="p">,</span> <span class="s2">&quot;وَحَلَّت سُلَيمى بَطنَ قَوِّ فَعَرعَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 00:21</span>
+    <span class="p">(</span><span class="s2">&quot;كِنانِيَّةٌ بانَت وَفي الصَدرِ وُدُّها&quot;</span><span class="p">,</span> <span class="s2">&quot;مُجاوِرَةٌ غَسّانَ وَالحَيُّ يَعمُرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 00:29</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;بِعَينَيَّ ظَعنُ الحَيِّ لَمّا تَحَمَّلوا&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;لَدى جانِبِ الأَفلاجِ مِن جَنبِ تَيمَرى&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 00:36</span>
+    <span class="p">(</span><span class="s2">&quot;فَشَبَّهتَهُم في الآلِ لَمّا تَكَمَّشوا&quot;</span><span class="p">,</span> <span class="s2">&quot;حَدائِقَ دومِ أَو سَفيناً مُقَيَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 00:43</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;أَوِ المُكرَعاتِ مِن نَخيلِ اِبنِ يامِنٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;دُوَينَ الصَفا اللائي يَلينَ المُشَقَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 00:50</span>
+    <span class="p">(</span><span class="s2">&quot;سَوامِقَ جَبّارَ أَثيثٍ فُروعَهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;وَعالَينَ قُنواناً مِنَ البُسرِ أَحمَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 00:57</span>
+    <span class="p">(</span><span class="s2">&quot;حَمَتهُ بَنو الرَبداءِ مِن آلِ يامِنٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;بِأَسيافِهِم حَتّى أَقَرَّ وَأَوقَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 01:05</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَأَرضى بَني الرَبداءِ وَاعَمَّ زَهوُهُ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;وَأَكمامُهُ حَتّى إِذا ما تَهَصَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 01:12</span>
+    <span class="p">(</span><span class="s2">&quot;أَطافَت بِهِ جَيلانَ عِندَ قِطاعِهِ&quot;</span><span class="p">,</span> <span class="s2">&quot;تُرَدِّدُ فيهِ العَينَ حَتّى تَحَيَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 01:19</span>
+    <span class="p">(</span><span class="s2">&quot;كَأَنَّ دُمى سَقفٍ عَلى ظَهرِ مَرمَرٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;كَسا مُزبِدَ الساجومِ وَشياً مُصَوَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 01:26</span>
+    <span class="p">(</span><span class="s2">&quot;غَرائِرُ في كَنٍّ وَصَونٍ وَنِعمَةٌ&quot;</span><span class="p">,</span> <span class="s2">&quot;يُحَلَّينَ ياقوتاً وَشَذراً مُفَقَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 01:34</span>
+    <span class="p">(</span><span class="s2">&quot;وَريحَ سَناً في حُقَّةٍ حِميَرِيَّةٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;تُخَصُّ بِمَفروكٍ مِنَ المِسكِ أَذفَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 01:42</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَباناً وَأُلوِيّاً مِنَ الهِندِ ذاكِياً&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;وَرَنداً وَلُبنىً وَالكِباءَ المُقَتَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 01:50</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;غَلِقنَ بِرَهنٍ مِن حَبيبٍ بِهِ اِدَّعَت&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;سُلَيمى فَأَمسى حَبلُها قَد تَبَتَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 01:58</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَكانَ لَها في سالِفِ الدَهرِ خُلَّةٌ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;يُسارِقُ بِالطَرفِ الخِباءَ المُسَتَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 02:04</span>
+    <span class="p">(</span><span class="s2">&quot;إِذا نالَ مِنها نَظرَةَ الريعِ قَلبُهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;كَما ذُعِرَت كَأسُ الصَبوحِ المُخَمَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:11</span>
+    <span class="p">(</span><span class="s2">&quot;نَزيفٌ إِذا قامَت لِوَجهٍ تَمايَلَت&quot;</span><span class="p">,</span> <span class="s2">&quot;تُراشي الفُؤادَ الرَخصَ أَلّا تَخَتَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:19</span>
+    <span class="p">(</span><span class="s2">&quot;أَأَسماءُ أَمسى وُدُّها قَد تَغَيَّرا&quot;</span><span class="p">,</span> <span class="s2">&quot;سَنُبدِلُ إِن أَبدَلتِ بِالوُدِّ آخَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:26</span>
+    <span class="p">(</span><span class="s2">&quot;تَذَكَّرتُ أَهلي الصالِحينَ وَقَد أَتَت&quot;</span><span class="p">,</span> <span class="s2">&quot;عَلى خَمَلى خوصُ الرِكابِ وَأَوجَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:34</span>
+    <span class="p">(</span><span class="s2">&quot;فَلَمّا بَدَت حَورانُ في الآلِ دونَها&quot;</span><span class="p">,</span> <span class="s2">&quot;نَظَرتَ فَلَم تَنظُر بِعَينَيكَ مَنظَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:41</span>
+    <span class="p">(</span><span class="s2">&quot;تَقَطَّعُ أَسبابُ اللُبانَةِ وَالهَوى&quot;</span><span class="p">,</span> <span class="s2">&quot;عَشِيَّةَ جاوَزنا حَماةَ وَشَيزَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 02:48</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;بِسَيرٍ يَضُجُّ العَودُ مِنهُ يَمُنُّهُ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;أَخو الجَهدِ لا يُلوي عَلى مَن تَعَذَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 02:56</span>
+    <span class="p">(</span><span class="s2">&quot;وَلَم يُنسِني ما قَد لَقيتُ ظَعائِناً&quot;</span><span class="p">,</span> <span class="s2">&quot;وَخَملاً لَها كَالقَرِّ يَوماً مُخَدَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:03</span>
+    <span class="p">(</span><span class="s2">&quot;كَأَثلٍ مِنَ الأَعراضِ مِن دونِ بَيشَةٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;وَدونَ الغُمَيرِ عامِداتٍ لِغَضوَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:10</span>
+    <span class="p">(</span><span class="s2">&quot;فَدَع ذا وَسَلِّ الهَمَّ عَنكَ بِجِسرَةٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;ذُمولٍ إِذا صامَ النَهارُ وَهَجَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:18</span>
+    <span class="p">(</span><span class="s2">&quot;تُقَطِّعُ غيطاناً كَأَنَّ مُتونَها&quot;</span><span class="p">,</span> <span class="s2">&quot;إِذا أَظهَرَت تُكسى مُلاءً مُنَشَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:25</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;بَعيدَةُ بَينَ المَنكِبَينِ كَأَنَّها&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;تَرى عِندَ مَجرى الضَفرِ هِرّاً مُشَجَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 03:31</span>
+    <span class="p">(</span><span class="s2">&quot;تُطايِرُ ظِرّانَ الحَصى بِمَناسِمٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;صِلابِ العُجى مَلثومُها غَيرُ أَمعَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:38</span>
+    <span class="p">(</span><span class="s2">&quot;كَأَنَّ الحَصى مِن خَلفِها وَأَمامَها&quot;</span><span class="p">,</span> <span class="s2">&quot;إِذا نَجَلَتهُ رِجلُها خَذفُ أَعسَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:44</span>
+    <span class="p">(</span><span class="s2">&quot;كَأَنَّ صَليلَ المَروِ حينَ تُطيرُهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;صَليلِ زُيوفٍ يُنتَقَدنَ بِعَبقَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:51</span>
+    <span class="p">(</span><span class="s2">&quot;عَلَيها فَتىً لَم تَحمِلِ الأَرضُ مِثلَهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;أَبَرَّ بِميثاقٍ وَأَوفى وَأَصبَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 03:58</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;هُوَ المُنزِلُ الآلافَ مِن جَوِّ ناعِطٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;بَني أَسَدٍ حَزناً مِنَ الأَرضِ أَوعَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 04:04</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَلَو شاءَ كانَ الغَزوُ مِن أَرضِ حِميَرٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;وَلَكِنَّهُ عَمداً إِلى الرومِ أَنفَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 04:11</span>
+    <span class="p">(</span><span class="s2">&quot;بَكى صاحِبي لَمّا رَأى الدَربَ دونَهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;وَأَيقَنَ أَنّا لاحِقانِ بِقَيصَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:18</span>
+    <span class="p">(</span><span class="s2">&quot;فَقُلتُ لَهُ لا تَبكي عَينُكَ إِنَّما&quot;</span><span class="p">,</span> <span class="s2">&quot;نُحاوِلُ مُلكاً أَو نَموتَ فَنُعذَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:25</span>
+    <span class="p">(</span><span class="s2">&quot;وَإِنّي زَعيمٌ إِن رَجِعتُ مُمَلَّكاً&quot;</span><span class="p">,</span> <span class="s2">&quot;بِسَيرٍ تَرى مِنهُ الفُرانِقَ أَزوَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:32</span>
+    <span class="p">(</span><span class="s2">&quot;عَلى لاحِبٍ لا يُهتَدى بِمَنارِهِ&quot;</span><span class="p">,</span> <span class="s2">&quot;إِذا سافَهُ العَودُ النَبَطِيُّ جَرجَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:39</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;عَلى كُلِّ مَقصوصِ الذُنابى مُعاوِدٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;بَريدَ السَرى بِاللَيلِ مِن خَيلِ بَربَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 04:45</span>
+    <span class="p">(</span><span class="s2">&quot;أَقَبَّ كَسَرحانِ الغَضا مُتَمَطِّرٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;تَرى الماءَ مِن أَعطافِهِ قَد تَحَدَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:52</span>
+    <span class="p">(</span><span class="s2">&quot;إِذا زُعتُهُ مِن جانِبَيهِ كِلَيهِما&quot;</span><span class="p">,</span> <span class="s2">&quot;مَشى الهَيدَبى في دَفِّهِ ثُمَّ فَرفَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 04:58</span>
+    <span class="p">(</span><span class="s2">&quot;إِذا قُلتُ رَوَّحنا أَرَنَّ فُرانِقٌ&quot;</span><span class="p">,</span> <span class="s2">&quot;عَلى جَلعَدٍ واهي الأَباجِلِ أَبتَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 05:05</span>
+    <span class="p">(</span><span class="s2">&quot;لَقَد أَنكَرَتني بَعلَبَكُّ وَأَهلُها&quot;</span><span class="p">,</span> <span class="s2">&quot;وَلَاِبنُ جُرَيجٍ في قُرى حِمصَ أَنكَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 05:12</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;نَشيمُ بَروقَ المُزنِ أَينَ مُصابُهُ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;وَلا شَيءَ يَشفي مِنكِ يا اِبنَةَ عَفزَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 05:19</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;مِنَ القاصِراتِ الطَرفِ لَو دَبَّ مُحوِلٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;مِنَ الذَرِّ فَوقَ الإِتبِ مِنها لَأَثَّرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 05:26</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;لَهُ الوَيلُ إِن أَمسى وَلا أُمُّ هاشِمٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;قَريبٌ وَلا البَسباسَةُ اِبنَةَ يَشكُرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 05:33</span>
+    <span class="p">(</span><span class="s2">&quot;أَرى أُمَّ عَمروٍ دَمعُها قَد تَحَدَّرا&quot;</span><span class="p">,</span> <span class="s2">&quot;بُكاءً عَلى عَمروٍ وَما كانَ أَصبَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 05:41</span>
+    <span class="p">(</span><span class="s2">&quot;إِذا نَحنُ سِرنا خَمسَ عَشرَةَ لَيلَةٍ&quot;</span><span class="p">,</span> <span class="s2">&quot;وَراءَ الحِساءِ مِن مَدافِعِ قَيصَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 05:48</span>
+    <span class="p">(</span><span class="s2">&quot;إِذا قُلتُ هَذا صاحِبٌ قَد رَضيتُهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;وَقَرَّت بِهِ العَينانِ بُدِّلتُ آخَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 05:55</span>
+    <span class="p">(</span><span class="s2">&quot;كَذَلِكَ جَدّي ما أُصاحِبُ صاحِباً&quot;</span><span class="p">,</span> <span class="s2">&quot;مِنَ الناسِ إِلّا خانَني وَتَغَيَّرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 06:03</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَكُنّا أُناساً قَبلَ غَزوَةِ قُرمُلٍ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;وَرَثنا الغِنى وَالمَجدَ أَكبَرَ أَكبَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 06:10</span>
+    <span class="p">(</span><span class="s2">&quot;وَما جَبُنَت خَيلي وَلَكِن تَذَكَّرَت&quot;</span><span class="p">,</span> <span class="s2">&quot;مَرابِطَها مِن بَربَعيصَ وَمَيسَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 06:17</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;أَلا رُبَّ يَومٍ صالِحٍ قَد شَهِدتُهُ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;بِتاذِفَ ذاتِ التَلِّ مِن فَوقِ طَرطَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># 06:24</span>
+    <span class="p">(</span><span class="s2">&quot;وَلا مِثلَ يَومٍ في قُدارانَ ظِلتُهُ&quot;</span><span class="p">,</span> <span class="s2">&quot;كَأَنّي وَأَصحابي عَلى قَرنِ أَعفَرا&quot;</span><span class="p">),</span>
+    <span class="c1"># 06:31</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;وَنَشرَبُ حَتّى نَحسِبَ الخَيلَ حَولَنا&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;نِقاداً وَحَتّى نَحسِبَ الجَونَ أَشقَرا&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+  </article>
+</div>
+
+
+<a id="back-top" href="#" title="Back to top" aria-label="Back to top">↑</a>
+
+<script>
+(function () {
+  // ── Reading progress ──────────────────────────────────────
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+
+
+// ── Build TOC from headings ───────────────────────────────
+  const article = document.querySelector('article');
+  const toc     = document.getElementById('toc');
+  const headings = article.querySelectorAll('h1,h2,h3,h4');
+  let idx = 0;
+
+  headings.forEach(h => {
+    if (h.id === 'doc-title') return;
+    if (!h.id) { h.id = 'heading-' + (idx++); }
+    const li  = document.createElement('li');
+    const a   = document.createElement('a');
+    a.href    = '#' + h.id;
+    a.textContent = h.textContent;
+    a.className   = 'toc-' + h.tagName.toLowerCase();
+    
+    // Add native tooltip only if the text is truncated
+    a.addEventListener('mouseenter', function() {
+      if (this.scrollWidth > this.clientWidth) {
+        this.title = this.textContent;
+      } else {
+        this.removeAttribute('title');
+      }
+    });
+
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // ── Active TOC highlight on scroll ───────────────────────
+  const tocLinks = toc.querySelectorAll('a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const link = toc.querySelector('a[href="#' + e.target.id + '"]');
+      if (link) link.classList.toggle('active', e.isIntersecting);
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+  headings.forEach(h => { if (h.id !== 'doc-title') observer.observe(h); });
+
+  // ── Back-to-top visibility ────────────────────────────────
+  const btt = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+  btt.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Sidebar toggle (mobile) ───────────────────────────────
+  document.getElementById('sidebar-toggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  // ── Sidebar collapse (desktop) ────────────────────────────
+  const collapseBtn = document.getElementById('sidebar-collapse-btn');
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+  }
+
+// ── Copy buttons on code blocks & prose blocks ────────────
+  document.querySelectorAll('.codehilite, pre:not(.codehilite pre)').forEach(block => {
+    const btn  = document.createElement('button');
+    btn.className   = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy text');
+    block.style.position = 'relative';
+    block.prepend(btn);
+    
+    btn.addEventListener('click', () => {
+      // Find the actual pre element (it might be the block itself, or inside it)
+      const pre = block.tagName === 'PRE' ? block : block.querySelector('pre');
+      if (!pre) return;
+      
+      // Clone the node so we can remove the button from the copied text
+      const clone = pre.cloneNode(true);
+      const btnInClone = clone.querySelector('.copy-btn');
+      if (btnInClone) btnInClone.remove();
+      
+      navigator.clipboard.writeText(clone.innerText).then(() => {
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+
+  
+  // ── Wrap tables for horizontal scroll ────────────────────
+  document.querySelectorAll('article table').forEach(t => {
+    const w = document.createElement('div');
+    w.className = 'table-wrap';
+    t.parentNode.insertBefore(w, t);
+    w.appendChild(t);
+  });
+
+  // ── Doc meta (word count + read time) ────────────────────
+  const words = article.innerText.trim().split(/\s+/).length;
+  const mins  = Math.max(1, Math.round(words / 200));
+  const meta  = document.getElementById('doc-meta');
+  if (meta) meta.textContent = words.toLocaleString() + ' words · ' + mins + ' min read';
+})();
+</script>
+
+</body>
+</html>
