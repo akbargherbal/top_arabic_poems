@@ -1,0 +1,81 @@
+
+<div class="bet-1 row pt-0 px-5 pb-4 justify-content-center diacritizable" id="poem_content">
+                        <h3 style="height: 28px;"><d class="mosahma_highlight" id="3238"><d class="mosahma_highlight" id="3238">لا تَعذَلِيه فَإِنَّ <span class="mosahma_highlight" id="3239">العَذلَ</span> <span class="mosahma_highlight" id="3240">يُولِعُهُ</span></d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="25278">قَد قَلتِ حَقاً وَلَكِن لَيسَ يَسمَعُهُ</d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="3242">جاوَزتِ</span> فِي نصحه حَداً <span class="mosahma_highlight" id="3241">أَضَرَّبِهِ</span></h3><h3 style="height: 28px;">
+مِن حَيثَ قَدرتِ أَنَّ النصح يَنفَعُهُ</h3><h3 style="height: 28px;">
+فَاستَعمِلِي <span class="mosahma_highlight" id="3243">الرِفق</span> فِي <span class="mosahma_highlight" id="3244">تَأِنِيبِهِ</span> بَدَلاً</h3><h3 style="height: 28px;">
+مِن <span class="mosahma_highlight" id="3246">عَذلِهِ</span> فَهُوَ <span class="mosahma_highlight" id="3245">مُضنى</span> القَلبِ مُوجعُهُ</h3><h3 style="height: 28px;">
+قَد كانَ <span class="mosahma_highlight" id="3247">مُضطَلَعاً</span> بِالخَطبِ يَحمِلُهُ</h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="3248">فَضُيَّقَت</span> <span class="mosahma_highlight" id="3249">بِخُطُوبِ</span> <span class="mosahma_highlight" id="3250">الدهرِ</span> <span class="mosahma_highlight" id="3251">أَضلُعُهُ</span></h3><h3 style="height: 28px;">
+يَكفِيهِ مِن <span class="mosahma_highlight" id="3252">لَوعَةِ</span> <span class="mosahma_highlight" id="3255">التَشتِيتِ</span> أَنَّ لَهُ</h3><h3 style="height: 28px;">
+مِنَ <span class="mosahma_highlight" id="3253">النَوى</span> كُلَّ يَومٍ ما <span class="mosahma_highlight" id="3254">يُروعُهُ</span></h3><h3 style="height: 28px;">
+ما <span class="mosahma_highlight" id="3256">آبَ</span> مِن سَفَرٍ إِلّا وَأَزعَجَهُ</h3><h3 style="height: 28px;">
+رَأيُ إِلى سَفَرٍ بِالعَزمِ <span class="mosahma_highlight" id="3257">يَزمَعُهُ</span></h3><h3 style="height: 28px;">
+كَأَنَّما هُوَ فِي <span class="mosahma_highlight" id="3258">حِلِّ</span> <span class="mosahma_highlight" id="3259">وَمُرتحلٍ</span></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="3261"><d class="mosahma_highlight" id="3261">مُوَكَّلٍ بِفَضاءِ اللَهِ <span class="mosahma_highlight" id="3260">يَذرَعُهُ</span></d></d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26709">إِذا الزَمانَ أَراهُ في الرَحِيلِ غِنىً</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26709">وَلَو إِلى السَندّ أَضحى وَهُوَ يُزمَعُهُ</d></h3><h3 style="height: 28px;">
+تأبى المطامعُ إلا أن <span class="mosahma_highlight" id="16687"><span class="mosahma_highlight" id="19210">تُجَشّمه</span></span></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26710">للرزق كداً وكم ممن يودعُهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26711">وَما مُجاهَدَةُ الإِنسانِ تَوصِلُهُ</d></h3><h3 style="height: 28px;">
+رزقَاً وَلا<span class="mosahma_highlight" id="18934">دَعَةُ</span> الإِنسانِ تَقطَعُهُ</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26712">قَد وَزَّع اللَهُ بَينَ الخَلقِ رزقَهُمُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26712">لَم يَخلُق اللَهُ مِن خَلقٍ يُضَيِّعُهُ</d></h3><h3 style="height: 28px;">
+لَكِنَّهُم <span class="mosahma_highlight" id="16407">كُلِّفُوا</span> حِرصاً فلَستَ تَرى</h3><h3 style="height: 28px;">
+مُستَرزِقاً وَسِوى <span class="mosahma_highlight" id="16409">الغاياتِ</span> تُقنُعُهُ</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26714">وَالحِرصُ في الرِزقِ وَالأَرزاقِ قَد قُسِمَت</d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="18935">بَغِيُ</span> أَلّا إِنَّ بَغيَ المَرءِ يَصرَعُهُ</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26715">وَالدهرُ يُعطِي الفَتى مِن حَيثُ يَمنَعُه</d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="3262">إِرثاً</span> وَيَمنَعُهُ مِن حَيثِ <span class="mosahma_highlight" id="3263">يُطمِعُهُ</span></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="3637"><d class="mosahma_highlight" id="3637"><d class="mosahma_highlight" id="26716">اِستَودِعُ اللَهَ فِي بَغدادَ لِي قَمَراً</d></d></d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="16410">بِالكَرخِ</span> مِن فَلَكِ الأَزرارَ مَطلَعُهُ</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26717">وَدَّعتُهُ وَبوُدّي لَو يُوَدِّعُنِي</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26717">صَفوَ الحَياةِ وَأَنّي لا أَودعُهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26718">وَكَم تَشبَّثَ بي يَومَ الرَحيلِ ضُحَىً</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26718">وَأَدمُعِي مُستَهِلّاتٍ وَأَدمُعُهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26719">لا أَكُذبُ اللَهَ ثوبُ الصَبرِ مُنخَرقٌ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26719">عَنّي بِفُرقَتِهِ لَكِن أَرَقِّعُهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26720">إِنّي أَوَسِّعُ عُذري فِي جَنايَتِهِ</d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="13449">بِالبينِ</span> عِنهُ وَجُرمي لا يُوَسِّعُهُ</h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26721">رُزِقتُ مُلكاً فَلَم أَحسِن سِياسَتَهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26721">وَكُلُّ مَن لا يُسُوسُ المُلكَ يَخلَعُهُ</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26722">وَمَن غَدا لابِساً ثَوبَ النَعِيم بِلا</d></h3><h3 style="height: 28px;">
+<d class="mosahma_highlight" id="26722">شَكرٍ عَلَيهِ فَإِنَّ اللَهَ يَنزَعُهُ</d></h3><h3 style="height: 28px;">
+<span class="mosahma_highlight" id="18936">اِعتَضتُ</span> مِن وَجهِ <span class="mosahma_highlight" id="16411">خِلّي</span> بَعدَ فُرقَتِهِ</h3><h3 style="height: 28px;">
+كَأساً أَجَرَّعُ مِنها ما أَجَرَّعُهُ</h3><h3 style="height: 28px;">
+كَم قائِلٍ لِي ذُقتُ البَينَ قُلتُ لَهُ</h3><h3 style="height: 28px;">
+الذَنبُ وَاللَهِ ذَنبي لَستُ أَدفَعُهُ</h3><h3 style="height: 28px;">
+أَلا أَقمتَ فَكانَ الرُشدُ أَجمَعُهُ</h3><h3 style="height: 28px;">
+لَو أَنَّنِي يَومَ بانَ الرُشدُ اتبَعُهُ</h3><h3 style="height: 28px;">
+إِنّي لَأَقطَعُ أيّامِي وَأنفقُها</h3><h3 style="height: 28px;">
+بِحَسرَةٍ مِنهُ فِي قَلبِي تُقَطِّعُهُ</h3><h3 style="height: 28px;">
+بِمَن إِذا <span class="mosahma_highlight" id="16412">هَجَعَ</span> النُوّامُ بِتُّ لَهُ</h3><h3 style="height: 28px;">
+بِلَوعَةٍ مِنهُ لَيلى لَستُ أَهجَعُهُ</h3><h3 style="height: 28px;">
+لا يَطمِئنُّ لِجَنبي مَضجَعُ وَكَذا</h3><h3 style="height: 28px;">
+لا يَطمَئِنُّ لَهُ مُذ بِنتُ مَضجَعُهُ</h3><h3 style="height: 28px;">
+ما كُنتُ أَحسَبُ أَنَّ الدهرَ يَفجَعُنِي</h3><h3 style="height: 28px;">
+بِهِ وَلا أَنَّ بِي الأَيّامَ تَفجعُهُ</h3><h3 style="height: 28px;">
+حَتّى جَرى البَينُ فِيما بَينَنا <span class="mosahma_highlight" id="13448">بِيَدٍ</span></h3><h3 style="height: 28px;">
+عَسراءَ تَمنَعُنِي حَظّي وَتَمنَعُهُ</h3><h3 style="height: 28px;">
+قَد كُنتُ مِن رَيبِ دهرِي جازِعاً <span class="mosahma_highlight" id="18937">فَرِقاً</span></h3><h3 style="height: 28px;">
+فَلَم أَوقَّ الَّذي قَد كُنتُ أَجزَعُهُ</h3><h3 style="height: 28px;">
+بِاللَهِ يا مَنزِلَ العَيشِ الَّذي <span class="mosahma_highlight" id="23362">دَرَس</span>ت</h3><h3 style="height: 28px;">
+آثارُهُ وَ<span class="mosahma_highlight" id="18939">عَفَت</span> مُذ بِنتُ أَربُعُهُ</h3><h3 style="height: 28px;">
+هَل الزَمانُ مُعِيدٌ فِيكَ لذَّتَنَا</h3><h3 style="height: 28px;">
+أَم اللَيالِي الَّتي أَمضَتهُ تُرجِعُهُ</h3><h3 style="height: 28px;">
+فِي ذِمَّةِ اللَهِ مِن أَصبَحَت مَنزلَهُ</h3><h3 style="height: 28px;">
+وَجادَ غَيثٌ عَلى مَغناكَ <span class="mosahma_highlight" id="11031">يُمرِعُهُ</span></h3><h3 style="height: 28px;">
+مَن عِندَهُ لِي عَهدُ لا يُضيّعُهُ</h3><h3 style="height: 28px;">
+كَما لَهُ عَهدُ صِدقٍ لا أُضَيِّعُهُ</h3><h3 style="height: 28px;">
+وَمَن يُصَدِّعُ قَلبي ذِكرَهُ وَإِذا</h3><h3 style="height: 28px;">
+جَرى عَلى قَلبِهِ ذِكري يُصَدِّعُهُ</h3><h3 style="height: 28px;">
+لَأَصبِرَنَّ على دهر لا يُمَتِّعُنِي</h3><h3 style="height: 28px;">
+بِهِ وَلا بِيَ فِي حالٍ يُمَتِّعُهُ</h3><h3 style="height: 28px;">
+عِلماً بِأَنَّ اِصطِباري مُعقِبُ فَرَجاً</h3><h3 style="height: 28px;">
+فَأَضيَقُ الأَمرِ إِن فَكَّرتَ أَوسَعُهُ</h3><h3 style="height: 28px;">
+عَسى اللَيالي الَّتي <span class="mosahma_highlight" id="23311">أَضنَت</span> بِفُرقَتَنا</h3><h3 style="height: 28px;">
+جِسمي سَتَجمَعُنِي يَوماً وَتَجمَعُهُ</h3><h3 style="height: 28px;">
+وَإِن تُغِلُّ أَحَدَاً مِنّا مَنيَّتَهُ</h3><h3 style="height: 28px;">
+فَما الَّذي بِقَضاءِ اللَهِ يَصنَعُهُ</h3>
+                    </div>
